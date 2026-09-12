@@ -1,0 +1,17 @@
+{
+    "name": "Fusion.Extensions",
+    "rootNamespace": "",
+    "references": [
+        "Fusion.Unity",
+        "Zenject"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
