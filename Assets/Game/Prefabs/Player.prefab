@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a7ea02a321bbd4bb1cb53e8084a43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.PlayerInputController
-  _character: {fileID: 0}
+  _character: {fileID: 4090054848993243041}
 --- !u!1 &2051941622203599037
 GameObject:
   m_ObjectHideFlags: 0

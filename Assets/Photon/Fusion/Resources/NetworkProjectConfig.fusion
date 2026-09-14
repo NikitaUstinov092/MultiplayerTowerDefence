@@ -96,6 +96,7 @@
     "AssembliesToWeave": [
         "Assembly-CSharp",
         "Assembly-CSharp-firstpass",
+        "Game",
         "Fusion.Extensions"
     ],
     "UseSerializableDictionary": true,
