@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1231370781976454233}
   - component: {fileID: 5493230855599609299}
+  - component: {fileID: 4090054848993243041}
+  - component: {fileID: 2386529175060577343}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -58,6 +60,39 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &4090054848993243041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404067246571692652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 2783997513
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 2386529175060577343}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &2386529175060577343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404067246571692652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a7ea02a321bbd4bb1cb53e8084a43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.PlayerInputController
+  _character: {fileID: 0}
 --- !u!1 &2051941622203599037
 GameObject:
   m_ObjectHideFlags: 0

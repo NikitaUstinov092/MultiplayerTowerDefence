@@ -52,6 +52,7 @@ namespace SampleGame
             }
         }
 
+        //TODO ProjectileWeapon раскоментить и добавить в геймплей
         // Kiss
         private float GetDelay()
         {

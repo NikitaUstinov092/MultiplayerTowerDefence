@@ -20663,7 +20663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cc414746d8f624a9e1534cfdd228dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.FusionBootstrap
-  _runner: {fileID: 0}
+  _runner: {fileID: 872498650}
 --- !u!4 &872498652
 Transform:
   m_ObjectHideFlags: 0
@@ -20676,7 +20676,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1693328713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &874805609
@@ -42642,6 +42643,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688704568}
   m_Mesh: {fileID: -19793887009534026, guid: 1ead2f8140c012a45a21a853418fa61b, type: 3}
+--- !u!1 &1693328712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693328713}
+  - component: {fileID: 1693328716}
+  - component: {fileID: 1693328715}
+  - component: {fileID: 1693328714}
+  m_Layer: 0
+  m_Name: <Player>
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1693328713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693328712}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 872498652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1693328714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693328712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9095c9eaeff71df4e8f14468c517af56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.PlayerInputPolling
+  _networkEvents: {fileID: 872498649}
+  _inputMap: {fileID: 11400000, guid: 42441693da79c5449a86470c0abeffd6, type: 2}
+--- !u!114 &1693328715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693328712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a92e0826b5e3d540b2804761c7bd5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.PlayerLeftController
+--- !u!114 &1693328716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693328712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca13e567ac396d4fac217dc645a8de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.PlayerJoinController
+  _characterPrefab: {fileID: 1404067246571692652, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
 --- !u!1 &1697742648
 GameObject:
   m_ObjectHideFlags: 0
