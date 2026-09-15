@@ -42715,7 +42715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca13e567ac396d4fac217dc645a8de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.PlayerJoinController
-  _characterPrefab: {fileID: 1404067246571692652, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+  _characterPrefab: {fileID: 4748872520371601905, guid: 973ea2a6ec0c25f4686ac75fb65f89a0, type: 3}
 --- !u!1 &1697742648
 GameObject:
   m_ObjectHideFlags: 0
