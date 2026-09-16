@@ -37,6 +37,7 @@ namespace SampleGame
         private void UpdatePosition(in Projectile projectile, PlayerRef player, NetworkRunner runner)
         {
             this.transform.position = _config.GetRenderPosition(in projectile, player, runner);
+            this.transform.rotation = Quaternion.LookRotation(projectile.Direction);
         }
     }
 }

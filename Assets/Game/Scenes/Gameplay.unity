@@ -28305,7 +28305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::SampleGame.ProjectileViewPool
   _container: {fileID: 1162677624}
   _pools:
-    _items: []
+    _items:
+    - Key: 0
+      Value:
+        _prefab: {fileID: 3715938391435014492, guid: e144f4fff9860bb4c836bc81264974ff, type: 3}
 --- !u!1 &1163201931
 GameObject:
   m_ObjectHideFlags: 0
