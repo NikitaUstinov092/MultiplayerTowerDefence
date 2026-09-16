@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad8c9d0bd3445079ed20a92a07197f0, type: 3}
-  m_Name: ProjectileConfig
+  m_Name: DirectProjectileConfig
   m_EditorClassIdentifier: Game::SampleGame.DirectProjectileConfig
   _damage: 1
-  _speed: 5
+  _speed: 12
   _layerMask:
     serializedVersion: 2
-    m_Bits: 55
-  _lifetime: 5
+    m_Bits: 1
+  _lifetime: 3

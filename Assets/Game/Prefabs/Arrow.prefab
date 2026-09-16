@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6395485873527495649}
+  - component: {fileID: 3715938391435014492}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -64,6 +65,19 @@ Transform:
   - {fileID: 6577828191405725432}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3715938391435014492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134814337769119832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17907c612df420ab97cf48c113b627d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.DirectProjectileView
+  _config: {fileID: 11400000, guid: a3cb62c84fff72743897d38b1edd4de8, type: 2}
 --- !u!1001 &5613671800019741609
 PrefabInstance:
   m_ObjectHideFlags: 0

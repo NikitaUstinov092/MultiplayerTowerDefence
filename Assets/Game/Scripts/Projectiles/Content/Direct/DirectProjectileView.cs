@@ -7,16 +7,7 @@ namespace SampleGame
     {
         [SerializeField]
         private DirectProjectileConfig _config;
-
-        [SerializeField]
-        private Renderer _renderer;
-
-        [SerializeField]
-        private Material _blue;
-
-        [SerializeField]
-        private Material _red;
-
+        
         public override void OnSpawn(
             in Projectile previous,
             in Projectile current,
@@ -25,7 +16,6 @@ namespace SampleGame
             NetworkRunner runner
         )
         {
-            _renderer.material = runner.LocalPlayer == player ? _blue : _red;
             this.UpdatePosition(in current, player, runner);
         }
 

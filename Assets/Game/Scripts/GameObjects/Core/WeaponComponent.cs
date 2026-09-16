@@ -52,7 +52,6 @@ namespace SampleGame
             }
         }
 
-        //TODO ProjectileWeapon раскоментить и добавить в геймплей
         // Kiss
         private float GetDelay()
         {
@@ -60,8 +59,8 @@ namespace SampleGame
             if (current is MeleeWeapon)
                 return _meleeFireDelay;
 
-            // if (current is ProjectileWeapon or HitscanWeapon)
-            //     return _rangeFireDelay;
+            if (current is ProjectileWeapon or HitscanWeapon)
+                return _rangeFireDelay;
 
             if (current is GrenadeWeapon)
                 return _grenadeFireDelay;

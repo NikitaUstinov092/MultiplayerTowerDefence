@@ -29,6 +29,11 @@ namespace SampleGame
             return _healthComponent.IsAlive;
         }
 
-        bool WeaponComponent.ICondition.IsMet() => _healthComponent.IsAlive;
+        bool WeaponComponent.ICondition.IsMet()
+        {
+            if(_healthComponent == null)
+                return true;
+            return _healthComponent.IsAlive;
+        }
     }
 }

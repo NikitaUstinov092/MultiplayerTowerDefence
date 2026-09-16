@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24d150a5bcd4f07b79bdac4334e99a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.ProjectileWorldView
-  _world: {fileID: 0}
-  _container: {fileID: 0}
+  _world: {fileID: 5173344133572238630}
+  _container: {fileID: 7914670964631343390}
 --- !u!1 &4748872520371601905
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d4d18b7ec845289762202541981894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.ProjectileWorld
-  _catalog: {fileID: 0}
+  _catalog: {fileID: 11400000, guid: 90768204b446df44c9460ba3a0a53754, type: 2}
 --- !u!1001 &1739971188127289267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3886161181845613680, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: _Current
+      value: 
+      objectReference: {fileID: 5121505475375056065}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: Flags
       value: 262402
@@ -193,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: NetworkedBehaviours.Array.size
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[0]'
@@ -219,10 +223,21 @@ PrefabInstance:
       propertyPath: 'NetworkedBehaviours.Array.data[5]'
       value: 
       objectReference: {fileID: 4224607810960875572}
+    - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2237413227863152304}
+    - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[7]'
+      value: 
+      objectReference: {fileID: 5121505475375056065}
     m_RemovedComponents:
     - {fileID: 2386529175060577343, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3862621573658044525, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8529013998862140130}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8624199316096552311, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       insertIndex: -1
@@ -266,6 +281,11 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+--- !u!4 &3296449421223929822 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3862621573658044525, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+  m_PrefabInstance: {fileID: 1739971188127289267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3300001163225342915 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3886161181845613680, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
@@ -323,3 +343,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ee577cf0a86be4c98968dd5b1b2323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.Character
+--- !u!1001 &4610045883012808973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3296449421223929822}
+    m_Modifications:
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712515116744689100, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: _projectileWorld
+      value: 
+      objectReference: {fileID: 5173344133572238630}
+    - target: {fileID: 8828669782932956849, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_Name
+      value: ProjecitleWeapon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+--- !u!114 &2237413227863152304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2375313691864209341, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+  m_PrefabInstance: {fileID: 4610045883012808973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88eec860b5164636a7c81866d26fc696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.ProjectileWeaponView
+--- !u!114 &5121505475375056065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8712515116744689100, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+  m_PrefabInstance: {fileID: 4610045883012808973}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85bbcb0a8d849ae87f556be95a74dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.ProjectileWeapon
+--- !u!4 &8529013998862140130 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5307220878402520047, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+  m_PrefabInstance: {fileID: 4610045883012808973}
+  m_PrefabAsset: {fileID: 0}
