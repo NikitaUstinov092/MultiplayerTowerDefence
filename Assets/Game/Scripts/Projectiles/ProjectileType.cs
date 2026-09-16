@@ -4,7 +4,6 @@ namespace SampleGame
     {
         Direct = 0,
         Ballistic = 1,
-        Homing = 2,
-        Ricochet = 3
+        Homing = 2
     }
 }

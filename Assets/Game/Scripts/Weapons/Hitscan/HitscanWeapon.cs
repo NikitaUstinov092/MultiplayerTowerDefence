@@ -114,7 +114,7 @@ namespace SampleGame
                     else if (hitType == HitType.Hitbox)
                         Debug.Log($"WAS HIT INTO HITBOX {hit.Hitbox.name}", hit.Hitbox);
 
-                    this.DealDamage(hit);
+                    this.DealDamage(hit, this.Object.InputAuthority);
 
                     endPosition = hit.Point;
                 }
@@ -160,7 +160,7 @@ namespace SampleGame
             return !hitboxRoot.TryGetBehaviour(out HealthComponent health) || !health.IsAlive;
         }
 
-        private void DealDamage(LagCompensatedHit hit)
+        private void DealDamage(LagCompensatedHit hit, PlayerRef player)
         {
             CharacterHitbox hitbox = hit.Hitbox as CharacterHitbox;
             if (hitbox == null)
@@ -169,7 +169,7 @@ namespace SampleGame
             int fullDamage = Mathf.RoundToInt(_damage * hitbox.DamageMultiplier);
             HealthComponent health = hitbox.GetComponentInParent<HealthComponent>();
             Debug.Log($"DEAL DAMAGE {fullDamage} TO TARGET {health.name}", health);
-            health.TakeDamage(fullDamage);
+            health.TakeDamage(fullDamage, player);
 
             if (hitbox.Detachable)
             {

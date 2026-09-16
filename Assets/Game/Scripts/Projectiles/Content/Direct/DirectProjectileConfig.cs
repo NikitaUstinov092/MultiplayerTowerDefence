@@ -56,15 +56,13 @@ namespace SampleGame
             }
         }
 
-        private bool DealDamage(Collider collider, PlayerRef player)
+        private void DealDamage(Collider collider, PlayerRef player)
         {
             NetworkObject target = collider.GetComponentInParent<NetworkObject>();
-            if (target == null || target.InputAuthority == player ||
-                !target.TryGetBehaviour(out HealthComponent healthComponent))
-                return false;
+            if (target == null || !target.TryGetBehaviour(out HealthComponent healthComponent))
+                return;
 
-            healthComponent.TakeDamage(_damage);
-            return true;
+            healthComponent.TakeDamage(_damage, player);
         }
 
         public override void OnGizmos(

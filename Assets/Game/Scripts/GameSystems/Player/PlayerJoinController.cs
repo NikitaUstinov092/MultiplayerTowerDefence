@@ -13,6 +13,9 @@ namespace SampleGame
             {
                 NetworkObject character = this.Runner.Spawn(_characterPrefab, Vector3.zero, Quaternion.identity, player);
                 this.Runner.SetPlayerObject(player, character); // Index peer, NetworkId
+
+                if (character.TryGetBehaviour(out TeamComponent team))
+                    team.SetTeam(Team.Players);
             }
         }
     }

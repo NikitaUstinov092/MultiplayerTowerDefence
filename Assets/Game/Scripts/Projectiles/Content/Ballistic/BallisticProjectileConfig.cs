@@ -159,11 +159,11 @@ namespace SampleGame
                 Collider collider = s_colliderBuffer[i];
 
                 NetworkObject networkObject = collider.GetComponentInParent<NetworkObject>();
-                if (networkObject == null || networkObject.InputAuthority == player)
+                if (networkObject == null)
                     continue;
 
                 if (networkObject.TryGetBehaviour(out HealthComponent healthComponent))
-                    healthComponent.TakeDamage(_damage);
+                    healthComponent.TakeDamage(_damage, player);
             }
         }
     }

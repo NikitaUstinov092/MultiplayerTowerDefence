@@ -16,10 +16,16 @@ namespace SampleGame
         [SerializeField]
         private WeaponComponent _weaponComponent;
 
+        [SerializeField]
+        private TeamComponent _teamComponent;
+
         public override void Spawned()
         {
             _moveComponent.SetCondition(this);
             _weaponComponent.SetCondition(this);
+
+            if (_teamComponent != null)
+                _healthComponent.SetDamageCondition(_teamComponent);
         }
         
         bool MoveComponent.ICondition.IsMet()

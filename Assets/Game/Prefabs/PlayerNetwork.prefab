@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: NetworkedBehaviours.Array.size
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[0]'
@@ -226,31 +226,51 @@ PrefabInstance:
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[6]'
       value: 
-      objectReference: {fileID: 4224607810960875572}
+      objectReference: {fileID: 6355976060145703862}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[7]'
       value: 
-      objectReference: {fileID: 3618655383796316529}
+      objectReference: {fileID: 3236592355564749667}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[8]'
       value: 
-      objectReference: {fileID: 4811524636929150787}
+      objectReference: {fileID: 4224607810960875572}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[9]'
       value: 
-      objectReference: {fileID: 5783894024377663997}
+      objectReference: {fileID: 3618655383796316529}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[10]'
       value: 
-      objectReference: {fileID: 2237413227863152304}
+      objectReference: {fileID: 4811524636929150787}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[11]'
       value: 
+      objectReference: {fileID: 5783894024377663997}
+    - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[12]'
+      value: 
+      objectReference: {fileID: 2237413227863152304}
+    - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[13]'
+      value: 
       objectReference: {fileID: 5121505475375056065}
+    - target: {fileID: 7477906174066507026, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: _teamComponent
+      value: 
+      objectReference: {fileID: 3236592355564749667}
     - target: {fileID: 7477906174066507026, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: _healthComponent
       value: 
       objectReference: {fileID: 8656065238395013018}
+    - target: {fileID: 7762120597068556887, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7763000700228060113, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2386529175060577343, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
     m_RemovedGameObjects: []
@@ -262,6 +282,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1404067246571692652, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8656065238395013018}
+    - targetCorrespondingSourceObject: {fileID: 1404067246571692652, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6355976060145703862}
+    - targetCorrespondingSourceObject: {fileID: 1404067246571692652, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3236592355564749667}
     - targetCorrespondingSourceObject: {fileID: 8624199316096552311, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4224607810960875572}
@@ -274,6 +300,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8624199316096552311, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5783894024377663997}
+    - targetCorrespondingSourceObject: {fileID: 7762115137727624131, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6773713678203036332}
+    - targetCorrespondingSourceObject: {fileID: 7764015388759677617, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1971582215513275516}
   m_SourcePrefab: {fileID: 100100000, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
 --- !u!114 &662919304190759689 stripped
 MonoBehaviour:
@@ -310,6 +342,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::SampleGame.HealthComponent
   _Current: 5
   <Max>k__BackingField: 10
+--- !u!114 &6355976060145703862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817862015196818911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1039544458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.HitboxRoot
+  Config: 1
+  BroadRadius: 1
+  Offset: {x: 0, y: 1, z: 0}
+  GizmosColor: {r: 1, g: 0.98576313, b: 0, a: 1}
+  Hitboxes:
+  - {fileID: 1971582215513275516}
+  - {fileID: 6773713678203036332}
+--- !u!114 &3236592355564749667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817862015196818911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92356880b0c948c4eb293fbaa208b74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.TeamComponent
+  _Current: 0
 --- !u!114 &885445228267891704 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1471592056689599563, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
@@ -425,6 +489,60 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7705296155306509989, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
   m_PrefabInstance: {fileID: 1739971188127289267}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8330195104309581058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7764015388759677617, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+  m_PrefabInstance: {fileID: 1739971188127289267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1971582215513275516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330195104309581058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35a076395dfd914faf96140f2d1c3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.CharacterHitbox
+  Type: 1
+  SphereRadius: 0
+  CapsuleRadius: 0.3
+  BoxExtents: {x: 0.5, y: 0.5, z: 0.5}
+  CapsuleExtents: 2
+  Offset: {x: 0, y: 0, z: 0}
+  Root: {fileID: 0}
+  GizmosColor: {r: 1, g: 0.19116497, b: 0.015686274, a: 1}
+  <DamageMultiplier>k__BackingField: 1
+  <Detachable>k__BackingField: 0
+--- !u!1 &8330828097197849712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7762115137727624131, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+  m_PrefabInstance: {fileID: 1739971188127289267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6773713678203036332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330828097197849712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35a076395dfd914faf96140f2d1c3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.CharacterHitbox
+  Type: 3
+  SphereRadius: 0
+  CapsuleRadius: 0.75
+  BoxExtents: {x: 0, y: 0, z: 0}
+  CapsuleExtents: 1.17
+  Offset: {x: 0, y: 0, z: 0}
+  Root: {fileID: 0}
+  GizmosColor: {r: 1, g: 0.24894042, b: 0.015686274, a: 1}
+  <DamageMultiplier>k__BackingField: 1
+  <Detachable>k__BackingField: 0
 --- !u!114 &9215282483591049889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7477906174066507026, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}

@@ -51,7 +51,7 @@ namespace SampleGame
             for (int i = 0, count = buffer.Count; i < count; i++)
             {
                 NetworkObject obj = buffer[i];
-                if (obj.InputAuthority == player || !obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive)
+                if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(player))
                     continue;
 
                 Vector3 destination = obj.transform.position;
@@ -92,7 +92,8 @@ namespace SampleGame
 
                 if ((targetId.IsValid && runner.TryFindObject(targetId, out NetworkObject target) ||
                      this.FindClosestTarget(projectile, player, runner, out target)) &&
-                    target.TryGetBehaviour(out HealthComponent health) && health.IsAlive)
+                    target.TryGetBehaviour(out HealthComponent health) && health.IsAlive &&
+                    health.CanBeDamagedBy(player))
                 {
                     Vector3 currentPosition = projectile.Position;
                     Vector3 targetPosition = target.transform.position + _targetOffset;
@@ -100,7 +101,7 @@ namespace SampleGame
 
                     if (delta.sqrMagnitude < moveStep * moveStep)
                     {
-                        health.TakeDamage(_damage);
+                        health.TakeDamage(_damage, player);
 
                         finished = true;
                         return;

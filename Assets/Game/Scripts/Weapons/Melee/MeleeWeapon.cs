@@ -53,9 +53,10 @@ namespace SampleGame
                     continue;
                 
                 NetworkObject other = hitbox.GetComponentInParent<NetworkObject>();
-                if (other != null && other.TryGetBehaviour(out HealthComponent health) && health.IsAlive)
+                if (other != null && other.TryGetBehaviour(out HealthComponent health) && health.IsAlive &&
+                    health.CanBeDamagedBy(this.Object.InputAuthority))
                 {
-                    health.TakeDamage(_damage);
+                    health.TakeDamage(_damage, this.Object.InputAuthority);
                     break;
                 }
             }

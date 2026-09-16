@@ -75,7 +75,7 @@ namespace SampleGame
 
                 if (other.TryGetBehaviour(out HealthComponent health)
                     && health.IsAlive)
-                    health.TakeDamage(_explodeDamage);
+                    health.TakeDamage(_explodeDamage, this.Owner);
 
                 if (other.TryGetComponent(out Rigidbody rigidbody))
                     rigidbody.AddExplosionForce(

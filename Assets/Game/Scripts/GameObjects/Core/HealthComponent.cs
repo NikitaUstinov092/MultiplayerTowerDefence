@@ -6,8 +6,13 @@ namespace SampleGame
 {
     public sealed class HealthComponent : NetworkBehaviour
     {
+        public interface IDamageCondition
+        {
+            bool IsMet(PlayerRef attacker);
+        }
+
         public delegate void HealthChangedHandler(int previous, int current);
-        
+
         public event HealthChangedHandler OnHealthChanged;
         public event Action OnDamageTaken;
 
@@ -31,6 +36,15 @@ namespace SampleGame
         private ushort _takeDamageEvents { get; set; } // 65000
 
         private ushort _localTakeDamageEvents;
+
+        private IDamageCondition _condition;
+
+        public void SetDamageCondition(IDamageCondition condition)
+        {
+            _condition = condition;
+        }
+
+        public bool CanBeDamagedBy(PlayerRef attacker) => _condition == null || _condition.IsMet(attacker);
 
         public override void Spawned()
         {
@@ -61,6 +75,14 @@ namespace SampleGame
 
             this.Current = Math.Max(0, this.Current - damage);
             _takeDamageEvents++;
+        }
+
+        public void TakeDamage(int damage, PlayerRef attacker)
+        {
+            if (!this.CanBeDamagedBy(attacker))
+                return;
+
+            this.TakeDamage(damage);
         }
 
         // Render()
