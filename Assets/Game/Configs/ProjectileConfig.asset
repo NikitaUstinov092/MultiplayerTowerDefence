@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ProjectileConfig
   m_EditorClassIdentifier: Game::SampleGame.DirectProjectileConfig
   _damage: 1
-  _speed: 5
+  _speed: 20
   _layerMask:
     serializedVersion: 2
     m_Bits: 55
