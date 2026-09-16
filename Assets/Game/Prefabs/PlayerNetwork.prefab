@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: NetworkedBehaviours.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[0]'
@@ -152,11 +152,18 @@ PrefabInstance:
       propertyPath: 'NetworkedBehaviours.Array.data[4]'
       value: 
       objectReference: {fileID: 9215282483591049889}
+    - target: {fileID: 4090054848993243041, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[5]'
+      value: 
+      objectReference: {fileID: 4224607810960875572}
     m_RemovedComponents:
     - {fileID: 2386529175060577343, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8624199316096552311, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4224607810960875572}
   m_SourcePrefab: {fileID: 100100000, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
 --- !u!114 &662919304190759689 stripped
 MonoBehaviour:
@@ -218,6 +225,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e3dc3e5fc1779498630658fb05fe1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.MoveComponent
+--- !u!1 &8037466310569345732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8624199316096552311, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+  m_PrefabInstance: {fileID: 1739971188127289267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4224607810960875572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037466310569345732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d2010327a04d449e2676a210780c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.MoveAnimComponent
+  _moveComponent: {fileID: 5175719141824741121}
+  _animator: {fileID: 8271749760097421590}
+--- !u!95 &8271749760097421590 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7705296155306509989, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
+  m_PrefabInstance: {fileID: 1739971188127289267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9215282483591049889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7477906174066507026, guid: 343607b7b8f81424d97be5e61fc664d6, type: 3}
