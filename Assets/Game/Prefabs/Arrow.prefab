@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17907c612df420ab97cf48c113b627d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.DirectProjectileView
-  _config: {fileID: 11400000, guid: a3cb62c84fff72743897d38b1edd4de8, type: 2}
+  _config: {fileID: 11400000, guid: 87b73f87e159ae54ead959557406b6ca, type: 2}
 --- !u!1001 &5613671800019741609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4872942100104817602, guid: c072151c13fbbd44abdd9c52ec652636, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4872942100104817602, guid: c072151c13fbbd44abdd9c52ec652636, type: 3}
       propertyPath: m_LocalRotation.w
