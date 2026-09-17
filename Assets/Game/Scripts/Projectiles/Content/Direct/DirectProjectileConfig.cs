@@ -49,11 +49,19 @@ namespace SampleGame
                 .GetPhysicsScene()
                 .Raycast(position, direction, out RaycastHit hit, _speed * deltaTime, _layerMask, Ignore);
 
-            if (wasHit)
+            if (wasHit && !this.IsFriendly(hit.collider, player))
             {
                 this.DealDamage(hit.collider, player);
                 finished = true;
             }
+        }
+
+        private bool IsFriendly(Collider collider, PlayerRef player)
+        {
+            NetworkObject target = collider.GetComponentInParent<NetworkObject>();
+            return target != null &&
+                   target.TryGetBehaviour(out HealthComponent healthComponent) &&
+                   !healthComponent.CanBeDamagedBy(player);
         }
 
         private void DealDamage(Collider collider, PlayerRef player)

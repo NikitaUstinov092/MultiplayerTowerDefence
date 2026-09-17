@@ -44,7 +44,11 @@ namespace SampleGame
             _condition = condition;
         }
 
-        public bool CanBeDamagedBy(PlayerRef attacker) => _condition == null || _condition.IsMet(attacker);
+        public bool CanBeDamagedBy(PlayerRef attacker)
+        {
+            var result = _condition == null || _condition.IsMet(attacker);
+            return result;
+        }
 
         public override void Spawned()
         {

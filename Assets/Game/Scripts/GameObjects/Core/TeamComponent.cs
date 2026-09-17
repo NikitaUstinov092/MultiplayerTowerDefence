@@ -15,7 +15,11 @@ namespace SampleGame
         bool HealthComponent.IDamageCondition.IsMet(PlayerRef attacker)
         {
             NetworkObject attackerObject = this.Runner.GetPlayerObject(attacker);
-            if (attackerObject == null || !attackerObject.TryGetBehaviour(out TeamComponent attackerTeam))
+            if (attackerObject == null)
+                return true;
+
+            TeamComponent attackerTeam = attackerObject.GetComponentInChildren<TeamComponent>();
+            if (attackerTeam == null)
                 return true;
 
             return attackerTeam.Current != this.Current;
