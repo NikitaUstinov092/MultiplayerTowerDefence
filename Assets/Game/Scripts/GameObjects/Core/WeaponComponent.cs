@@ -1,11 +1,14 @@
 using System;
 using Fusion;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace SampleGame
 {
     public sealed class WeaponComponent : NetworkBehaviour
     {
+        private const float f = 0.0001f;
+        
         public interface ICondition
         {
             bool IsMet();
@@ -15,6 +18,9 @@ namespace SampleGame
 
         [Networked, UnitySerializeField]
         public Weapon Current { get; private set; }
+
+        [Networked]
+        public NetworkObject Target { get; set; }
 
         [Header("Weapon delay")]
         [SerializeField]
@@ -43,13 +49,32 @@ namespace SampleGame
             _condition = condition;
         }
 
+        [Button]
+        public void SetTarget(NetworkObject target)
+        {
+            if (this.HasStateAuthority)
+                this.Target = target;
+        }
+
         public void StartFire()
         {
             if (!_delayTimestamp.IsRunning && this.CanFire())
             {
+                if (this.Target == null)
+                    return;
+
                 _delayTimestamp = TickTimer.CreateFromSeconds(this.Runner, this.GetDelay());
                 _fireStartedEvents++;
             }
+        }
+
+        private void RotateTowardsTarget()
+        {
+            Vector3 direction = this.Target.transform.position - this.transform.position;
+            direction.y = 0;
+            
+            if (direction.sqrMagnitude > f)
+                this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
 
         // Kiss
@@ -83,6 +108,9 @@ namespace SampleGame
         {
             if (_delayTimestamp.Expired(this.Runner) && this.CanFire())
             {
+                if (this.Target != null)
+                    this.RotateTowardsTarget();
+
                 this.Current.Fire();
                 _delayTimestamp = default;
             }
