@@ -8,18 +8,12 @@ namespace SampleGame
         [SerializeField]
         private NetworkObject _character;
 
-        [Networked]
-        private NetworkButtons _previousButtons { get; set; }
-        
-        public override void FixedUpdateNetwork() 
+        public override void FixedUpdateNetwork()
         {
             if (this.GetInput(out PlayerInputData inputData))
             {
-                NetworkButtons inputButtons = inputData.buttons;
                 this.ProcessMove(inputData.moveDirection);
-                this.ProcessSprint(inputButtons);
-                this.ProcessFire(inputButtons);
-                _previousButtons = inputButtons;
+                this.ProcessSprint(inputData.buttons);
             }
             else
             {
@@ -31,12 +25,6 @@ namespace SampleGame
         {
             bool sprint = inputButtons.IsSet(PlayerInputButtons.Sprint);
             _character.GetBehaviour<SprintComponent>().IsSprint = sprint;
-        }
-
-        private void ProcessFire(NetworkButtons inputButtons)
-        {
-            if (inputButtons.WasPressed(_previousButtons, PlayerInputButtons.Fire)) 
-                _character.GetBehaviour<WeaponComponent>().StartFire();
         }
 
         private void ProcessMove(Vector2 inputDirection)

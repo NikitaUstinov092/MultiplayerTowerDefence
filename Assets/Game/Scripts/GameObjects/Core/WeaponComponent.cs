@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using Fusion;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace SampleGame
 {
@@ -21,6 +23,12 @@ namespace SampleGame
 
         [Networked]
         public NetworkObject Target { get; set; }
+
+        [SerializeField]
+        private MoveComponent _moveComponent;
+
+        [SerializeField]
+        private float _detectionRadius = 15f;
 
         [Header("Weapon delay")]
         [SerializeField]
@@ -72,9 +80,38 @@ namespace SampleGame
         {
             Vector3 direction = this.Target.transform.position - this.transform.position;
             direction.y = 0;
-            
+
             if (direction.sqrMagnitude > f)
                 this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        }
+
+        private bool FindClosestTarget(out NetworkObject target)
+        {
+            List<NetworkObject> buffer = ListPool<NetworkObject>.Get();
+            this.Runner.GetAllNetworkObjects(buffer);
+
+            PlayerRef player = this.Object.InputAuthority;
+            float detectionRadius = _detectionRadius * _detectionRadius;
+            float minDistance = detectionRadius;
+            target = null;
+
+            for (int i = 0, count = buffer.Count; i < count; i++)
+            {
+                NetworkObject obj = buffer[i];
+                if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(player))
+                    continue;
+
+                float distance = (obj.transform.position - this.transform.position).sqrMagnitude;
+                if (distance > minDistance)
+                    continue;
+
+                minDistance = distance;
+                target = obj;
+            }
+
+            ListPool<NetworkObject>.Release(buffer);
+
+            return target != null;
         }
 
         // Kiss
@@ -106,6 +143,16 @@ namespace SampleGame
 
         public override void FixedUpdateNetwork()
         {
+            if (!_delayTimestamp.IsRunning)
+            {
+                this.Target = this.CanFire() && !_moveComponent.IsMoving && this.FindClosestTarget(out NetworkObject target)
+                    ? target
+                    : null;
+
+                if (this.Target != null)
+                    this.StartFire();
+            }
+
             if (_delayTimestamp.Expired(this.Runner) && this.CanFire())
             {
                 if (this.Target != null)

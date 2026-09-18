@@ -9,18 +9,12 @@ namespace SampleGame
     public sealed class PlayerInputMap : ScriptableObject
     {
         [SerializeField]
-        private KeyCode _fireKey = KeyCode.Space;
+        private KeyCode _sprintKey = KeyCode.LeftShift;
 
-        [SerializeField]
-        private KeyCode _sprintKey = KeyCode.LeftShift; 
-        
-        public Vector2 GetMoveDirection() => 
+        public Vector2 GetMoveDirection() =>
             new(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        public bool IsSprint() => 
+        public bool IsSprint() =>
             Input.GetKey(_sprintKey);
-
-        public bool IsFirePressed() => 
-            Input.GetKeyDown(_fireKey);
     }
 }
