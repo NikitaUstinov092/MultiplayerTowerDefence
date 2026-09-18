@@ -1,17 +1,19 @@
 using System;
-using System.Collections.Generic;
 using Fusion;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace SampleGame
 {
     public sealed class WeaponComponent : NetworkBehaviour
     {
-        private const float f = 0.0001f;
+        private const float MinRotationDirectionSqrMagnitude = 0.0001f;
         
         public interface ICondition
+        {
+            bool IsMet();
+        }
+
+        public interface IIdleCondition
         {
             bool IsMet();
         }
@@ -23,9 +25,6 @@ namespace SampleGame
 
         [Networked]
         public NetworkObject Target { get; set; }
-
-        [SerializeField]
-        private MoveComponent _moveComponent;
 
         [SerializeField]
         private float _detectionRadius = 15f;
@@ -49,6 +48,7 @@ namespace SampleGame
         private ushort _localFireStartedEvents;
 
         private ICondition _condition;
+        private IIdleCondition _idleCondition;
 
         public bool IsFireStarted => _delayTimestamp.IsRunning(this.Runner);
 
@@ -57,11 +57,9 @@ namespace SampleGame
             _condition = condition;
         }
 
-        [Button]
-        public void SetTarget(NetworkObject target)
+        public void SetIdleCondition(IIdleCondition condition)
         {
-            if (this.HasStateAuthority)
-                this.Target = target;
+            _idleCondition = condition;
         }
 
         public void StartFire()
@@ -81,37 +79,8 @@ namespace SampleGame
             Vector3 direction = this.Target.transform.position - this.transform.position;
             direction.y = 0;
 
-            if (direction.sqrMagnitude > f)
+            if (direction.sqrMagnitude > MinRotationDirectionSqrMagnitude)
                 this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        }
-
-        private bool FindClosestTarget(out NetworkObject target)
-        {
-            List<NetworkObject> buffer = ListPool<NetworkObject>.Get();
-            this.Runner.GetAllNetworkObjects(buffer);
-
-            PlayerRef player = this.Object.InputAuthority;
-            float detectionRadius = _detectionRadius * _detectionRadius;
-            float minDistance = detectionRadius;
-            target = null;
-
-            for (int i = 0, count = buffer.Count; i < count; i++)
-            {
-                NetworkObject obj = buffer[i];
-                if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(player))
-                    continue;
-
-                float distance = (obj.transform.position - this.transform.position).sqrMagnitude;
-                if (distance > minDistance)
-                    continue;
-
-                minDistance = distance;
-                target = obj;
-            }
-
-            ListPool<NetworkObject>.Release(buffer);
-
-            return target != null;
         }
 
         // Kiss
@@ -145,7 +114,9 @@ namespace SampleGame
         {
             if (!_delayTimestamp.IsRunning)
             {
-                this.Target = this.CanFire() && !_moveComponent.IsMoving && this.FindClosestTarget(out NetworkObject target)
+                bool canSearch = this.CanFire() && (_idleCondition == null || _idleCondition.IsMet());
+                this.Target = canSearch &&
+                              NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, this.Object.InputAuthority, out NetworkObject target)
                     ? target
                     : null;
 

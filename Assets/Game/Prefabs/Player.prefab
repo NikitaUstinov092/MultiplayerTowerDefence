@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.WeaponComponent
   _Current: {fileID: 0}
-  _moveComponent: {fileID: 6914793101296595122}
   _detectionRadius: 15
   _meleeFireDelay: 0.25
   _rangeFireDelay: 0.2
