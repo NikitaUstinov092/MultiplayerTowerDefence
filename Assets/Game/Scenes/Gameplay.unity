@@ -20551,6 +20551,7 @@ GameObject:
   - component: {fileID: 872498648}
   - component: {fileID: 872498647}
   - component: {fileID: 872498646}
+  - component: {fileID: 872498999}
   m_Layer: 0
   m_Name: '[NetworkRunner]'
   m_TagString: Untagged
@@ -20695,6 +20696,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.FusionBootstrap
   _runner: {fileID: 872498650}
+--- !u!114 &872498999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872498645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d2eb75e75c4b92ab1b01d3f26444c5, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Game::SampleGame.LoseNotificator
 --- !u!4 &872498652
 Transform:
   m_ObjectHideFlags: 0
@@ -53044,6 +53057,7 @@ GameObject:
   - component: {fileID: 2134370800}
   - component: {fileID: 2134370799}
   - component: {fileID: 2134370798}
+  - component: {fileID: 2134370999}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -53135,6 +53149,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2134370999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134370796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe70afac602719c1c062c3cee2cf6cf, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Game::Game.LosePopupPresenter
+  _loseNotificator: {fileID: 872498999}
+  _losePopup: {fileID: 343090202}
 --- !u!1 &2137877237
 GameObject:
   m_ObjectHideFlags: 0
