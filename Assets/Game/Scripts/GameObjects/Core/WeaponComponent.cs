@@ -90,7 +90,7 @@ namespace SampleGame
             if (current is MeleeWeapon)
                 return _meleeFireDelay;
 
-            if (current is ProjectileWeapon or HitscanWeapon)
+            if (current is ProjectileWeapon)
                 return _rangeFireDelay;
 
             if (current is GrenadeWeapon)
@@ -116,7 +116,7 @@ namespace SampleGame
             {
                 bool canSearch = this.CanFire() && (_idleCondition == null || _idleCondition.IsMet());
                 this.Target = canSearch &&
-                              NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, this.Object.InputAuthority, out NetworkObject target)
+                              NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, this.Object, out NetworkObject target)
                     ? target
                     : null;
 

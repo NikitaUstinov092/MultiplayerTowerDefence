@@ -32,7 +32,7 @@ namespace SampleGame
         {
             // Kiss
             Weapon weapon = _weaponComponent.Current;
-            if (weapon is ProjectileWeapon or HitscanWeapon)
+            if (weapon is ProjectileWeapon)
                 _animator.SetTrigger(Fire);
             //TODO в Animator Controller нет параметра MeleeFire, добавить и раскомментировать
             // else if (weapon is MeleeWeapon)

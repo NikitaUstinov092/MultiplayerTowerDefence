@@ -34,16 +34,36 @@ namespace SampleGame
 
         public override void Fire()
         {
-            int count = this.Runner.LagCompensation.OverlapSphere(
-                _firePoint.position,
-                _fireRadius,
-                this.Object.InputAuthority,
-                s_hitsBuffer,
-                _layerMask,
-                HitOptions.IncludePhysX | HitOptions.SubtickAccuracy | HitOptions.IgnoreInputAuthority,
-                clearHits: true,
-                Ignore
-            );
+            PlayerRef inputAuthority = this.Object.InputAuthority;
+            int count;
+            if (inputAuthority.IsValid)
+            {
+                count = this.Runner.LagCompensation.OverlapSphere(
+                    _firePoint.position,
+                    _fireRadius,
+                    inputAuthority,
+                    s_hitsBuffer,
+                    _layerMask,
+                    HitOptions.IncludePhysX | HitOptions.SubtickAccuracy,
+                    clearHits: true,
+                    Ignore
+                );
+            }
+            else
+            {
+                count = this.Runner.LagCompensation.OverlapSphere(
+                    _firePoint.position,
+                    _fireRadius,
+                    this.Runner.Tick.Raw,
+                    null,
+                    null,
+                    s_hitsBuffer,
+                    _layerMask,
+                    HitOptions.IncludePhysX | HitOptions.SubtickAccuracy,
+                    clearHits: true,
+                    Ignore
+                );
+            }
 
             for (int i = 0; i < count; i++)
             {
@@ -51,12 +71,12 @@ namespace SampleGame
                 Hitbox hitbox = hit.Hitbox;
                 if (hitbox == null)
                     continue;
-                
+
                 NetworkObject other = hitbox.GetComponentInParent<NetworkObject>();
                 if (other != null && other.TryGetBehaviour(out HealthComponent health) && health.IsAlive &&
-                    health.CanBeDamagedBy(this.Object.InputAuthority))
+                    health.CanBeDamagedBy(this.Object))
                 {
-                    health.TakeDamage(_damage, this.Object.InputAuthority);
+                    health.TakeDamage(_damage, this.Object);
                     break;
                 }
             }

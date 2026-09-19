@@ -11,7 +11,7 @@ namespace SampleGame
             NetworkRunner runner,
             Vector3 origin,
             float radius,
-            PlayerRef player,
+            NetworkObject attacker,
             out NetworkObject target
         )
         {
@@ -24,7 +24,7 @@ namespace SampleGame
             for (int i = 0, count = buffer.Count; i < count; i++)
             {
                 NetworkObject obj = buffer[i];
-                if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(player))
+                if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(attacker))
                     continue;
 
                 float distance = (obj.transform.position - origin).sqrMagnitude;

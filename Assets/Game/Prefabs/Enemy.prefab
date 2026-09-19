@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 1566698135185617819}
   - component: {fileID: 9212985552086173684}
   - component: {fileID: 5114473885640666910}
-  - component: {fileID: 269913666170490472}
   - component: {fileID: 6686800148435733653}
   - component: {fileID: 4015308033570808424}
   - component: {fileID: 1006777905141067054}
+  - component: {fileID: 5152190256428910264}
+  - component: {fileID: 341978306887234560}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -83,9 +84,10 @@ MonoBehaviour:
   - {fileID: 6686800148435733653}
   - {fileID: 9212985552086173684}
   - {fileID: 5114473885640666910}
-  - {fileID: 269913666170490472}
   - {fileID: 4015308033570808424}
   - {fileID: 1006777905141067054}
+  - {fileID: 5152190256428910264}
+  - {fileID: 341978306887234560}
   - {fileID: 6939211626844439034}
   - {fileID: 6939211626844439999}
   ForceRemoteRenderTimeframe: 0
@@ -123,22 +125,6 @@ MonoBehaviour:
   _meleeFireDelay: 0.25
   _rangeFireDelay: 0.2
   _grenadeFireDelay: 1
---- !u!114 &269913666170490472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011030080782938114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ee577cf0a86be4c98968dd5b1b2323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.Character
-  _healthComponent: {fileID: 0}
-  _moveComponent: {fileID: 0}
-  _weaponComponent: {fileID: 0}
-  _teamComponent: {fileID: 0}
 --- !u!114 &6686800148435733653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +192,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.TeamComponent
   _Current: 1
+--- !u!114 &5152190256428910264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92356880b0c948c4eb293fbaa208b74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.TeamComponent
+  _Current: 1
+--- !u!114 &341978306887234560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c27d61691e64070b32d7623f7bb4fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.MeleeWeapon
+  _firePoint: {fileID: 4010362202926120242}
+  _fireRadius: 0.5
+  _damage: 1
+  _cooldown: 1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &6681128362121645732
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +268,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77d2010327a04d449e2676a210780c92, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.MoveAnimComponent
   _moveComponent: {fileID: 9212985552086173684}
   _animator: {fileID: 4406589717366456297}
@@ -264,7 +282,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2daa7814c228e70292196f726569cba8, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.DeathAnimComponent
   _healthComponent: {fileID: 4015308033570808424}
   _animator: {fileID: 4406589717366456297}

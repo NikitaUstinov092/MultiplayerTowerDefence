@@ -8,7 +8,7 @@ namespace SampleGame
     {
         public interface IDamageCondition
         {
-            bool IsMet(PlayerRef attacker);
+            bool IsMet(NetworkObject attacker);
         }
 
         public delegate void HealthChangedHandler(int previous, int current);
@@ -44,10 +44,16 @@ namespace SampleGame
             _condition = condition;
         }
 
-        public bool CanBeDamagedBy(PlayerRef attacker)
+        public bool CanBeDamagedBy(NetworkObject attacker)
         {
             var result = _condition == null || _condition.IsMet(attacker);
             return result;
+        }
+
+        // Перегрузка для мест, где под рукой только PlayerRef (снаряды/гранаты).
+        public bool CanBeDamagedBy(PlayerRef attacker)
+        {
+            return this.CanBeDamagedBy(this.Runner.GetPlayerObject(attacker));
         }
 
         public override void Spawned()
@@ -81,12 +87,18 @@ namespace SampleGame
             _takeDamageEvents++;
         }
 
-        public void TakeDamage(int damage, PlayerRef attacker)
+        public void TakeDamage(int damage, NetworkObject attacker)
         {
             if (!this.CanBeDamagedBy(attacker))
                 return;
 
             this.TakeDamage(damage);
+        }
+
+        // Перегрузка для мест, где под рукой только PlayerRef (снаряды/гранаты).
+        public void TakeDamage(int damage, PlayerRef attacker)
+        {
+            this.TakeDamage(damage, this.Runner.GetPlayerObject(attacker));
         }
 
         // Render()

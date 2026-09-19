@@ -12,13 +12,12 @@ namespace SampleGame
             this.Current = team;
         }
 
-        bool HealthComponent.IDamageCondition.IsMet(PlayerRef attacker)
+        bool HealthComponent.IDamageCondition.IsMet(NetworkObject attacker)
         {
-            NetworkObject attackerObject = this.Runner.GetPlayerObject(attacker);
-            if (attackerObject == null)
+            if (attacker == null)
                 return true;
 
-            TeamComponent attackerTeam = attackerObject.GetComponentInChildren<TeamComponent>();
+            TeamComponent attackerTeam = attacker.GetComponentInChildren<TeamComponent>();
             if (attackerTeam == null)
                 return true;
 
