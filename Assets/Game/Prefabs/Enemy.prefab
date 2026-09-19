@@ -10,6 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4010362202926120242}
   - component: {fileID: 216082409229877555}
+  - component: {fileID: 1566698135185617819}
+  - component: {fileID: 9212985552086173684}
+  - component: {fileID: 5114473885640666910}
+  - component: {fileID: 269913666170490472}
+  - component: {fileID: 6686800148435733653}
+  - component: {fileID: 4015308033570808424}
+  - component: {fileID: 1006777905141067054}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -55,6 +62,150 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1566698135185617819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 3057016047
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262402
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 6686800148435733653}
+  - {fileID: 9212985552086173684}
+  - {fileID: 5114473885640666910}
+  - {fileID: 269913666170490472}
+  - {fileID: 4015308033570808424}
+  - {fileID: 1006777905141067054}
+  - {fileID: 6939211626844439034}
+  - {fileID: 6939211626844439999}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &9212985552086173684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e3dc3e5fc1779498630658fb05fe1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.MoveComponent
+  _moveSpeed: 5
+  _angularSpeed: 720
+  _MoveDirection: {x: 0, y: 0, z: 0}
+  _sprintComponent: {fileID: 0}
+--- !u!114 &5114473885640666910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3123e1dfc4d1e4c86540a0e4c33258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.WeaponComponent
+  _Current: {fileID: 0}
+  _Target: {fileID: 0}
+  _detectionRadius: 15
+  _meleeFireDelay: 0.25
+  _rangeFireDelay: 0.2
+  _grenadeFireDelay: 1
+--- !u!114 &269913666170490472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ee577cf0a86be4c98968dd5b1b2323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.Character
+  _healthComponent: {fileID: 0}
+  _moveComponent: {fileID: 0}
+  _weaponComponent: {fileID: 0}
+  _teamComponent: {fileID: 0}
+--- !u!114 &6686800148435733653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkTransform
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  ConfigFlags: 0
+  PhysicsSettings:
+    ForecastEnabled: 1
+    DebugPhysics: 0
+    GravityForecast: 2
+    MaxExtrapolationTime: 0.15
+    MinLinearDetectedError: 0.02
+    MinAngularDetectedError: 3
+    MaxLinearError: 0
+    MaxAngularError: 0
+    LowCorrectionProgressThreshold: 0.015
+    HighErrorSimilarityThreshold: 1
+    MaxErrorTotalTime: 0.5
+    MaxRemoteSleepIgnoreTime: 0.5
+    ErrorCorrectionType: 0
+    LinearVelCorrectionMul: 1
+    AngularVelCorrectionMul: 1
+    PositionCorrectionLerp: 0.15
+    RotationCorrectionLerp: 0.15
+    Spring: 75
+    Damper: 2
+    MinImpactfulCollisionAlignment: 0.3
+    ImpactStartCorrectionTime: 0.1
+    ImpactCorrectionTimeComplete: 0.3
+--- !u!114 &4015308033570808424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f71db446279014083d4a207566b18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.HealthComponent
+  _Current: 5
+  <Max>k__BackingField: 10
+--- !u!114 &1006777905141067054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92356880b0c948c4eb293fbaa208b74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.TeamComponent
+  _Current: 1
 --- !u!1 &6681128362121645732
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +215,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4110996159869562643}
+  - component: {fileID: 6939211626844439034}
+  - component: {fileID: 6939211626844439999}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -87,6 +240,34 @@ Transform:
   - {fileID: 4406589717359022089}
   m_Father: {fileID: 4010362202926120242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6939211626844439034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681128362121645732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d2010327a04d449e2676a210780c92, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Game::SampleGame.MoveAnimComponent
+  _moveComponent: {fileID: 9212985552086173684}
+  _animator: {fileID: 4406589717366456297}
+--- !u!114 &6939211626844439999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681128362121645732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2daa7814c228e70292196f726569cba8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Game::SampleGame.DeathAnimComponent
+  _healthComponent: {fileID: 4015308033570808424}
+  _animator: {fileID: 4406589717366456297}
 --- !u!1 &7136196916883076713
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,5 +978,10 @@ PrefabInstance:
 --- !u!4 &4406589717359022089 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3118294153675890160, guid: 4ee150fee7825a148b7ceb77408044b5, type: 3}
+  m_PrefabInstance: {fileID: 1612625129254522361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4406589717366456297 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3118294153684955664, guid: 4ee150fee7825a148b7ceb77408044b5, type: 3}
   m_PrefabInstance: {fileID: 1612625129254522361}
   m_PrefabAsset: {fileID: 0}
