@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1006777905141067054}
   - component: {fileID: 5152190256428910264}
   - component: {fileID: 341978306887234560}
+  - component: {fileID: 7271929092312676701}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -88,6 +89,7 @@ MonoBehaviour:
   - {fileID: 1006777905141067054}
   - {fileID: 5152190256428910264}
   - {fileID: 341978306887234560}
+  - {fileID: 7271929092312676701}
   - {fileID: 6939211626844439034}
   - {fileID: 6939211626844439999}
   ForceRemoteRenderTimeframe: 0
@@ -224,6 +226,22 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 55
+--- !u!114 &7271929092312676701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ee577cf0a86be4c98968dd5b1b2323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.Character
+  _healthComponent: {fileID: 4015308033570808424}
+  _moveComponent: {fileID: 9212985552086173684}
+  _weaponComponent: {fileID: 5114473885640666910}
+  _teamComponent: {fileID: 1006777905141067054}
 --- !u!1 &6681128362121645732
 GameObject:
   m_ObjectHideFlags: 0
