@@ -20696,18 +20696,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.FusionBootstrap
   _runner: {fileID: 872498650}
---- !u!114 &872498999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872498645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d2eb75e75c4b92ab1b01d3f26444c5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Game::SampleGame.LoseNotificator
 --- !u!4 &872498652
 Transform:
   m_ObjectHideFlags: 0
@@ -20726,6 +20714,18 @@ Transform:
   - {fileID: 1693328713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &872498999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872498645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d2eb75e75c4b92ab1b01d3f26444c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.LoseNotificator
 --- !u!1 &874805609
 GameObject:
   m_ObjectHideFlags: 0
@@ -42812,6 +42812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.PlayerJoinController
   _characterPrefab: {fileID: 4748872520371601905, guid: 973ea2a6ec0c25f4686ac75fb65f89a0, type: 3}
+  _spawnPointService: {fileID: 1569224910}
 --- !u!1 &1697742648
 GameObject:
   m_ObjectHideFlags: 0
@@ -53159,7 +53160,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbe70afac602719c1c062c3cee2cf6cf, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Game::Game.LosePopupPresenter
   _loseNotificator: {fileID: 872498999}
   _losePopup: {fileID: 343090202}

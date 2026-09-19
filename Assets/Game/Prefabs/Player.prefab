@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.WeaponComponent
   _Current: {fileID: 0}
+  _Target: {fileID: 0}
   _detectionRadius: 15
   _meleeFireDelay: 0.25
   _rangeFireDelay: 0.2
@@ -151,6 +152,7 @@ MonoBehaviour:
   _healthComponent: {fileID: 0}
   _moveComponent: {fileID: 6914793101296595122}
   _weaponComponent: {fileID: 3886161181845613680}
+  _teamComponent: {fileID: 0}
 --- !u!114 &1471592056689599563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkTransform
   _stateAuthorityChangeErrorCorrectionDelta: 0
   SyncScale: 0
-  SyncParent: 0
+  SyncParent: 1
   _autoAOIOverride: 1
   ConfigFlags: 0
   PhysicsSettings:
