@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 6686800148435733653}
   - component: {fileID: 4015308033570808424}
   - component: {fileID: 1006777905141067054}
-  - component: {fileID: 5152190256428910264}
   - component: {fileID: 341978306887234560}
   - component: {fileID: 7271929092312676701}
+  - component: {fileID: 9192501994020255413}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -87,9 +87,9 @@ MonoBehaviour:
   - {fileID: 5114473885640666910}
   - {fileID: 4015308033570808424}
   - {fileID: 1006777905141067054}
-  - {fileID: 5152190256428910264}
   - {fileID: 341978306887234560}
   - {fileID: 7271929092312676701}
+  - {fileID: 9192501994020255413}
   - {fileID: 6939211626844439034}
   - {fileID: 6939211626844439999}
   ForceRemoteRenderTimeframe: 0
@@ -194,19 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.TeamComponent
   _Current: 1
---- !u!114 &5152190256428910264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011030080782938114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92356880b0c948c4eb293fbaa208b74a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.TeamComponent
-  _Current: 1
 --- !u!114 &341978306887234560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +228,21 @@ MonoBehaviour:
   _healthComponent: {fileID: 4015308033570808424}
   _moveComponent: {fileID: 9212985552086173684}
   _weaponComponent: {fileID: 5114473885640666910}
+  _teamComponent: {fileID: 1006777905141067054}
+--- !u!114 &9192501994020255413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffc4c2f5dbba4d4d9d5367cab5ec579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Enemy
+  _healthComponent: {fileID: 4015308033570808424}
+  _moveComponent: {fileID: 9212985552086173684}
   _teamComponent: {fileID: 1006777905141067054}
 --- !u!1 &6681128362121645732
 GameObject:

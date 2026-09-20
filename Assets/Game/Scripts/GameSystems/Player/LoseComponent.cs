@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SampleGame
 {
-    public sealed class PlayerLoseComponent : NetworkBehaviour
+    public sealed class LoseComponent : NetworkBehaviour
     {
         [SerializeField]
         private HealthComponent _healthComponent;

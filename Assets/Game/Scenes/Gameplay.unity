@@ -32705,13 +32705,93 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1317087213}
+    - targetCorrespondingSourceObject: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1317087212}
+    - targetCorrespondingSourceObject: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1317087210}
+    - targetCorrespondingSourceObject: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1317087215}
   m_SourcePrefab: {fileID: 100100000, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+--- !u!1 &1317087207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+  m_PrefabInstance: {fileID: 1317087206}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1317087209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7687135409742009684, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
   m_PrefabInstance: {fileID: 1317087206}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1317087210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317087207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d233cadd8e5e50d71c9d5d7d17bf7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.LoseComponent
+  _healthComponent: {fileID: 1317087212}
+--- !u!114 &1317087212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317087207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f71db446279014083d4a207566b18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.HealthComponent
+  _Current: 10
+  <Max>k__BackingField: 10
+--- !u!114 &1317087213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317087207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 2483961840
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1317087212}
+  - {fileID: 1317087210}
+  - {fileID: 1317087215}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &1317087215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317087207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302381264d3e18646bd0b6abbbd789b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.PortalHealthBarPresenter
+  _healthComponent: {fileID: 1317087212}
+  _view: {fileID: 363295879}
 --- !u!1 &1321235933
 GameObject:
   m_ObjectHideFlags: 0
@@ -53151,7 +53231,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &2134370799
 MonoBehaviour:
   m_ObjectHideFlags: 0
