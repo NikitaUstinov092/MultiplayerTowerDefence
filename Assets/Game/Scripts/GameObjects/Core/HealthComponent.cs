@@ -46,6 +46,10 @@ namespace SampleGame
 
         public bool CanBeDamagedBy(NetworkObject attacker)
         {
+            // Без TeamComponent объект не может быть целью ни для поиска, ни для урона (например, Portal)
+            if (!this.Object.TryGetBehaviour(out TeamComponent _))
+                return false;
+
             var result = _condition == null || _condition.IsMet(attacker);
             return result;
         }

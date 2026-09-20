@@ -12,13 +12,11 @@ GameObject:
   - component: {fileID: 216082409229877555}
   - component: {fileID: 1566698135185617819}
   - component: {fileID: 9212985552086173684}
-  - component: {fileID: 5114473885640666910}
   - component: {fileID: 6686800148435733653}
   - component: {fileID: 4015308033570808424}
   - component: {fileID: 1006777905141067054}
-  - component: {fileID: 341978306887234560}
-  - component: {fileID: 7271929092312676701}
   - component: {fileID: 9192501994020255413}
+  - component: {fileID: 2054567114659283018}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -84,12 +82,10 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 6686800148435733653}
   - {fileID: 9212985552086173684}
-  - {fileID: 5114473885640666910}
   - {fileID: 4015308033570808424}
   - {fileID: 1006777905141067054}
-  - {fileID: 341978306887234560}
-  - {fileID: 7271929092312676701}
   - {fileID: 9192501994020255413}
+  - {fileID: 2054567114659283018}
   - {fileID: 6939211626844439034}
   - {fileID: 6939211626844439999}
   ForceRemoteRenderTimeframe: 0
@@ -108,25 +104,6 @@ MonoBehaviour:
   _moveSpeed: 5
   _angularSpeed: 720
   _MoveDirection: {x: 0, y: 0, z: 0}
-  _sprintComponent: {fileID: 0}
---- !u!114 &5114473885640666910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011030080782938114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c3123e1dfc4d1e4c86540a0e4c33258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.WeaponComponent
-  _Current: {fileID: 0}
-  _Target: {fileID: 0}
-  _detectionRadius: 15
-  _meleeFireDelay: 0.25
-  _rangeFireDelay: 0.2
-  _grenadeFireDelay: 1
 --- !u!114 &6686800148435733653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,41 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.TeamComponent
   _Current: 1
---- !u!114 &341978306887234560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011030080782938114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c27d61691e64070b32d7623f7bb4fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.MeleeWeapon
-  _firePoint: {fileID: 4010362202926120242}
-  _fireRadius: 0.5
-  _damage: 1
-  _cooldown: 1
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 55
---- !u!114 &7271929092312676701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011030080782938114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ee577cf0a86be4c98968dd5b1b2323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.Character
-  _healthComponent: {fileID: 4015308033570808424}
-  _moveComponent: {fileID: 9212985552086173684}
-  _weaponComponent: {fileID: 5114473885640666910}
-  _teamComponent: {fileID: 1006777905141067054}
 --- !u!114 &9192501994020255413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +186,20 @@ MonoBehaviour:
   _healthComponent: {fileID: 4015308033570808424}
   _moveComponent: {fileID: 9212985552086173684}
   _teamComponent: {fileID: 1006777905141067054}
+--- !u!114 &2054567114659283018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011030080782938114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64fdbb3c50abe443b44dedf55d54438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.EnemyAi
+  _moveComponent: {fileID: 9212985552086173684}
+  _stopDistance: 1.5
 --- !u!1 &6681128362121645732
 GameObject:
   m_ObjectHideFlags: 0

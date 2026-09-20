@@ -27,8 +27,10 @@ namespace SampleGame
                 if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(attacker))
                     continue;
 
-                // Целью может быть только объект с TeamComponent (иначе, например, Portal без команды будет валидной целью для кого угодно)
-                if (!obj.TryGetBehaviour(out TeamComponent _))
+                // Не берём в цели того, у кого совпадает команда с атакующим
+                if (obj.TryGetBehaviour(out TeamComponent targetTeam) &&
+                    attacker != null && attacker.TryGetBehaviour(out TeamComponent attackerTeam) &&
+                    targetTeam.Current == attackerTeam.Current)
                     continue;
 
                 float distance = (obj.transform.position - origin).sqrMagnitude;

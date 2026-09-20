@@ -30,10 +30,7 @@ namespace SampleGame
 
         [Networked, OnChangedRender(nameof(MoveDirectionChanged))]
         public Vector3 MoveDirection { get; private set; }
-
-        [SerializeField]
-        private SprintComponent _sprintComponent;
-
+        
         // FUN
         public void Move(Vector3 direction)
         {
@@ -62,8 +59,7 @@ namespace SampleGame
 
         private void UpdatePosition(Vector3 direction, float deltaTime)
         {
-            float moveSpeed = _moveSpeed * _sprintComponent.Multiplier;
-            this.transform.position += direction * deltaTime * moveSpeed;
+            this.transform.position += direction * deltaTime * _moveSpeed;
         }
 
         private void MoveDirectionChanged()
