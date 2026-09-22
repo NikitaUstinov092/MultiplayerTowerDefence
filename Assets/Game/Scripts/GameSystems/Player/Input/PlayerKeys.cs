@@ -3,6 +3,6 @@
     public enum PlayerKeys
     {
         Mine = 0,
-        Turret = 1
+        Archer = 1
     }
 }

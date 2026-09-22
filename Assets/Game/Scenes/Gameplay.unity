@@ -3573,6 +3573,7 @@ Transform:
   - {fileID: 382391468}
   - {fileID: 1317087209}
   - {fileID: 1892315238}
+  - {fileID: 225814066}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &164539443
@@ -5720,6 +5721,104 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221480613}
   m_Mesh: {fileID: 494204477685600569, guid: 5addf6b26e2d67b49baaeedb3df9d7c9, type: 3}
+--- !u!1 &225814065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225814066}
+  - component: {fileID: 225814069}
+  - component: {fileID: 225814068}
+  - component: {fileID: 225814067}
+  - component: {fileID: 225814070}
+  m_Layer: 0
+  m_Name: Wallet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &225814066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225814065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 158099399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &225814067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225814065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b972ab26638b9044696d64bbb6ccb629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.TeamWalletPresenter
+  _teamWallet: {fileID: 225814068}
+  _balanceText: {fileID: 1767864885}
+--- !u!114 &225814068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225814065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ff56e7d2efaea48bc04fc264884db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.TeamWallet
+  _catalog: {fileID: 11400000, guid: 0d7dc1e1479bd0a41a623d88d0041077, type: 2}
+  _startingBalance: 1000
+  _Balance: 0
+--- !u!114 &225814069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225814065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 3781583794
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 225814068}
+  - {fileID: 225814067}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &225814070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225814065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d31edc605d3c344bab1e45514d4405f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.WalletService
+  _teamWallet: {fileID: 225814068}
 --- !u!1 &226492285
 GameObject:
   m_ObjectHideFlags: 0

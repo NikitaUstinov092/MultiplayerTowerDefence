@@ -8,6 +8,8 @@ namespace SampleGame
         [SerializeField]
         private NetworkObject _character;
 
+        public NetworkObject Character => _character;
+
         public override void FixedUpdateNetwork()
         {
             if (this.GetInput(out PlayerInputData inputData))
