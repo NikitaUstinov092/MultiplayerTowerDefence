@@ -1,13 +1,20 @@
 {
   "dependencies": {
     "com.unity-biome-mcp.editor": {
-      "version": "https://github.com/german-krasnikov/unity-biome-mcp.git?path=unity-plugin",
+      "version": "https://github.com/german-krasnikov/unity-biome-mcp.git?path=unity-plugin#v2.1.0",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.mono-cecil": "1.11.5"
       },
-      "hash": "4520c577ba3e58d8730c9984919c4d4b7ffe2bf2"
+      "hash": "c96b187fd6b638a15991b59617c00656f8e4e840"
+    },
+    "com.unity-biome-mcp.reload": {
+      "version": "https://github.com/german-krasnikov/unity-biome-mcp.git?path=unity-plugin-reload#v2.1.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c96b187fd6b638a15991b59617c00656f8e4e840"
     },
     "com.unity.bindings.openimageio": {
       "version": "1.0.0",

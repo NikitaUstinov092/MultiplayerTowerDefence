@@ -24,9 +24,6 @@ namespace SampleGame
         [Rpc(RpcSources.All, RpcTargets.StateAuthority, Channel = RpcChannel.Reliable, TickAligned = false, HostMode = RpcHostMode.SourceIsHostPlayer)]
         public void RpcTryBuy(PlayerKeys id, RpcInfo info = default)
         {
-            // ВРЕМЕННЫЙ ДИАГНОСТИЧЕСКИЙ ЛОГ - убрать после отладки двойного спавна.
-            Debug.Log($"[RpcTryBuy] id={id} source={info.Source} tick={this.Runner.Tick}");
-
             if (!this.HasStateAuthority || _catalog == null)
                 return;
 
