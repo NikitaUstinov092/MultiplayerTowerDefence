@@ -59,9 +59,15 @@ namespace SampleGame
         private bool IsFriendly(Collider collider, PlayerRef player)
         {
             NetworkObject target = collider.GetComponentInParent<NetworkObject>();
-            return target != null &&
-                   target.TryGetBehaviour(out HealthComponent healthComponent) &&
-                   !healthComponent.CanBeDamagedBy(player);
+            if (target == null || !target.TryGetBehaviour(out HealthComponent healthComponent))
+                return false;
+
+            // Мёртвый враг не деспавнится и остаётся коллайдером в мире - труп не должен
+            // поглощать снаряд, летящий в живую цель позади него.
+            if (!healthComponent.IsAlive)
+                return true;
+
+            return !healthComponent.CanBeDamagedBy(player);
         }
 
         private void DealDamage(Collider collider, PlayerRef player)

@@ -29,6 +29,9 @@ namespace SampleGame
         [SerializeField]
         private float _detectionRadius = 15f;
 
+        [SerializeField]
+        private LayerMask _detectionLayerMask;
+
         [Header("Weapon delay")]
         [SerializeField]
         private float _meleeFireDelay = 0.25f;
@@ -112,11 +115,16 @@ namespace SampleGame
 
         public override void FixedUpdateNetwork()
         {
+            // Поиск/прицел/выстрел - решение сервера. Без этой проверки тот же код выполняется
+            // ещё раз на клиенте-владельце (у него InputAuthority), удваивая результат.
+            if (!this.HasStateAuthority)
+                return;
+
             if (!_delayTimestamp.IsRunning)
             {
                 bool canSearch = this.CanFire() && (_idleCondition == null || _idleCondition.IsMet());
                 this.Target = canSearch &&
-                              NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, this.Object, out NetworkObject target)
+                              NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, _detectionLayerMask, this.Object, out NetworkObject target)
                     ? target
                     : null;
 
@@ -126,9 +134,15 @@ namespace SampleGame
 
             if (_delayTimestamp.Expired(this.Runner) && this.CanFire())
             {
-                if (this.Target != null)
-                    this.RotateTowardsTarget();
+                // Цель могла умереть/деспавниться за время задержки выстрела - Target тогда
+                // резолвится в null. Стрелять по устаревшему направлению прицела нельзя.
+                if (this.Target == null)
+                {
+                    _delayTimestamp = default;
+                    return;
+                }
 
+                this.RotateTowardsTarget();
                 this.Current.Fire();
                 _delayTimestamp = default;
             }

@@ -1,29 +1,36 @@
-using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
-using UnityEngine.Pool;
+using static UnityEngine.QueryTriggerInteraction;
 
 namespace SampleGame
 {
     public static class NearestEnemyFinder
     {
+        // Не по кол-ву объектов в матче, а по тому, сколько реально попало в сферу поиска.
+        private const int MaxColliders = 32;
+        private static readonly Collider[] s_colliderBuffer = new Collider[MaxColliders];
+
         public static bool TryFind(
             NetworkRunner runner,
             Vector3 origin,
             float radius,
+            LayerMask layerMask,
             NetworkObject attacker,
             out NetworkObject target
         )
         {
-            List<NetworkObject> buffer = ListPool<NetworkObject>.Get();
-            runner.GetAllNetworkObjects(buffer);
+            int count = runner.GetPhysicsScene()
+                .OverlapSphere(origin, radius, s_colliderBuffer, layerMask, Ignore);
 
             float minDistance = radius * radius;
             target = null;
 
-            for (int i = 0, count = buffer.Count; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
-                NetworkObject obj = buffer[i];
+                NetworkObject obj = s_colliderBuffer[i].GetComponentInParent<NetworkObject>();
+                if (obj == null)
+                    continue;
+
                 if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(attacker))
                     continue;
 
@@ -40,8 +47,6 @@ namespace SampleGame
                 minDistance = distance;
                 target = obj;
             }
-
-            ListPool<NetworkObject>.Release(buffer);
 
             return target != null;
         }

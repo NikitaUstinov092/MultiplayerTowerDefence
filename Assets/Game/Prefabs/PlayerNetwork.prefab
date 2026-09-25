@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7914670964631343390}
   - component: {fileID: 2377504972085571446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: <Projecitles>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 7079742756030373676}
   - component: {fileID: 5173344133572238630}
   - component: {fileID: 7420179284204704960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerNetwork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,6 +710,10 @@ PrefabInstance:
     - target: {fileID: 8828669782932956849, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
       propertyPath: m_Name
       value: ProjecitleWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828669782932956849, guid: eb6631ffaa48f614dbd207f982d7d6e1, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

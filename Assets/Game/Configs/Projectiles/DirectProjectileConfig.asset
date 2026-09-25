@@ -16,5 +16,5 @@ MonoBehaviour:
   _speed: 12
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   _lifetime: 3
