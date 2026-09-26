@@ -92,12 +92,9 @@ namespace SampleGame
 
         public override void FixedUpdateNetwork()
         {
-            // Поиск/прицел/выстрел - решение сервера. Без этой проверки тот же код выполняется
-            // ещё раз на клиенте-владельце (у него InputAuthority), удваивая результат.
-            if (!this.HasStateAuthority)
-                return;
-
-            if (!_delayTimestamp.IsRunning)
+            // Выбор цели - только сервер: на клиенте позиции врагов интерполированы и цель разошлась бы.
+            // Клиент получает Target и запущенную задержку из снапшота и предиктит сам выстрел.
+            if (this.HasStateAuthority && !_delayTimestamp.IsRunning)
             {
                 bool canSearch = this.CanFire() && (_idleCondition == null || _idleCondition.IsMet());
                 this.Target = canSearch &&

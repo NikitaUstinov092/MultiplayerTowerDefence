@@ -11,6 +11,13 @@ GameObject:
   - component: {fileID: 6935035375170665498}
   - component: {fileID: 3250875177827939019}
   - component: {fileID: 8220056287449810426}
+  - component: {fileID: 2467744401686828239}
+  - component: {fileID: 4405842660251395533}
+  - component: {fileID: 4029820830797369455}
+  - component: {fileID: 4615619140963260774}
+  - component: {fileID: 2504875368575483967}
+  - component: {fileID: 8753395737976895915}
+  - component: {fileID: 8106300305859715601}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -54,6 +61,13 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8220056287449810426}
+  - {fileID: 2467744401686828239}
+  - {fileID: 4405842660251395533}
+  - {fileID: 4615619140963260774}
+  - {fileID: 2504875368575483967}
+  - {fileID: 8753395737976895915}
+  - {fileID: 8106300305859715601}
+  - {fileID: 4122850597688137624}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &8220056287449810426
 MonoBehaviour:
@@ -95,6 +109,120 @@ MonoBehaviour:
     MinImpactfulCollisionAlignment: 0.3
     ImpactStartCorrectionTime: 0.1
     ImpactCorrectionTimeComplete: 0.3
+--- !u!114 &2467744401686828239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92356880b0c948c4eb293fbaa208b74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.TeamComponent
+  _Current: 0
+--- !u!114 &4405842660251395533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1b95a533e9f05468c282e208df359c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.ContactDamageComponent
+  _damage: 3
+  _cooldown: 1
+--- !u!136 &4029820830797369455
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &4615619140963260774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553f27cedaad03543809308d929b3d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.CapsuleCollisionComponent
+  _collider: {fileID: 4029820830797369455}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &2504875368575483967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1bf808ae46bfa46818cddc1898cb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.ExplosionComponent
+  _radius: 3
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _IsExploded:
+    RawValue: 0
+--- !u!114 &8753395737976895915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9000758714634a45b8269f09e1b086b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.Scripts.GameObjects.Mine
+  _teamComponent: {fileID: 2467744401686828239}
+  _collisionComponent: {fileID: 4615619140963260774}
+  _explosionComponent: {fileID: 2504875368575483967}
+  _contactDamage: {fileID: 4405842660251395533}
+  _despawnComponent: {fileID: 8106300305859715601}
+--- !u!114 &8106300305859715601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643883716822658005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cba83aea3573d44f81dbdbf6478efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.DespawnComponent
+  _despawnDelay: 2
 --- !u!1 &5840269309069271907
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075958083537264518}
   - component: {fileID: 7888801951579955390}
+  - component: {fileID: 4122850597688137624}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -196,6 +325,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4122850597688137624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6741106735321080187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1672974f358f44044bcaa566f2756b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.MineExplosionView
+  _explosion: {fileID: 2504875368575483967}
+  _visual: {fileID: 6741106735321080187}
+  _explosionSpawner: {fileID: 4045130943203886644}
 --- !u!1001 &4473241536175105767
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -84,7 +84,9 @@ namespace SampleGame
 
         public void TakeDamage(int damage)
         {
-            if (damage <= 0 || this.IsDead)
+            // Урон считает только сервер: снаряды симулируются и на клиенте-владельце (предикт),
+            // а запись в HP чужих прокси-объектов на клиенте даёт мерцание до прихода снапшота.
+            if (!this.HasStateAuthority || damage <= 0 || this.IsDead)
                 return;
 
             this.Current = Math.Max(0, this.Current - damage);

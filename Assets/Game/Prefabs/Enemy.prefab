@@ -196,6 +196,7 @@ MonoBehaviour:
   _teamComponent: {fileID: 1006777905141067054}
   _collisionComponent: {fileID: 7410356839006817333}
   _contactDamage: {fileID: 56668429170965571}
+  _despawnComponent: {fileID: 5312190040486538970}
 --- !u!114 &2054567114659283018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +222,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cba83aea3573d44f81dbdbf6478efd0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.DespawnOnDeathComponent
-  _healthComponent: {fileID: 4015308033570808424}
+  m_EditorClassIdentifier: Game::SampleGame.DespawnComponent
   _despawnDelay: 1
 --- !u!114 &56668429170965571
 MonoBehaviour:

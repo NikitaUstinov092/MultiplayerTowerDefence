@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : NetworkBehaviour,
     MoveComponent.ICondition,
-    CapsuleCollisionComponent.IHandler
+    CapsuleCollisionComponent.IHandler,
+    DespawnComponent.ICondition
 {
     [SerializeField]
     private HealthComponent _healthComponent;
@@ -21,8 +22,14 @@ public class Enemy : NetworkBehaviour,
     [SerializeField]
     private ContactDamageComponent _contactDamage;
 
+    [SerializeField]
+    private DespawnComponent _despawnComponent;
+
     public override void Spawned()
     {
+        if (_despawnComponent != null)
+            _despawnComponent.SetCondition(this);
+
         _moveComponent.SetCondition(this);
 
         if (_teamComponent != null)
@@ -38,6 +45,8 @@ public class Enemy : NetworkBehaviour,
             return true;
         return _healthComponent.IsAlive;
     }
+
+    bool DespawnComponent.ICondition.IsMet() => _healthComponent.IsDead;
 
     void CapsuleCollisionComponent.IHandler.OnCollision(NetworkObject other)
     {

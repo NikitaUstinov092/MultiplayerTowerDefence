@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Game
 {
@@ -9,7 +9,11 @@ namespace Game
 
         public void Play()
         {
-            Instantiate(_effectPrefab, _playPoint.position, _playPoint.rotation, null);
+            ParticlePool pool = ParticlePool.Instance;
+            if (pool != null)
+                pool.Play(_effectPrefab, _playPoint.position, _playPoint.rotation);
+            else
+                Instantiate(_effectPrefab, _playPoint.position, _playPoint.rotation, null);
         }
     }
 }
