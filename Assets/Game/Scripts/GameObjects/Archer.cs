@@ -1,18 +1,16 @@
 using Fusion;
+using SampleGame;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects
 {
-    public sealed class Character : NetworkBehaviour,
+    public sealed class Archer : NetworkBehaviour,
         MoveComponent.ICondition,
         WeaponComponent.ICondition,
         WeaponComponent.IIdleCondition
     {
         [SerializeField]
         private HealthComponent _healthComponent;
-
-        [SerializeField]
-        private MoveComponent _moveComponent;
 
         [SerializeField]
         private WeaponComponent _weaponComponent;
@@ -22,7 +20,6 @@ namespace SampleGame
 
         public override void Spawned()
         {
-            _moveComponent.SetCondition(this);
             _weaponComponent.SetCondition(this);
             _weaponComponent.SetIdleCondition(this);
 
@@ -32,21 +29,17 @@ namespace SampleGame
 
         bool MoveComponent.ICondition.IsMet()
         {
-            if(_healthComponent == null)
-                return true;
             return _healthComponent.IsAlive;
         }
 
         bool WeaponComponent.ICondition.IsMet()
         {
-            if(_healthComponent == null)
-                return true;
             return _healthComponent.IsAlive;
         }
 
         bool WeaponComponent.IIdleCondition.IsMet()
         {
-            return !_moveComponent.IsMoving;
+            return _healthComponent.IsAlive;
         }
     }
 }

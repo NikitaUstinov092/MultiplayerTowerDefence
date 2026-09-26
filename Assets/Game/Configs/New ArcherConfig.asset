@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: New ArcherConfig
   m_EditorClassIdentifier: Game::Game.PurchasableConfig
   _prefab:
-    RawGuidValue: cd9a4372cefbf3747b263b423d5a0a17
+    RawGuidValue: 39bcabf86e9413c47b6015860d0566a6
   _price: 200

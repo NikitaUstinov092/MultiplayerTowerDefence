@@ -31,17 +31,10 @@ namespace SampleGame
 
         [SerializeField]
         private LayerMask _detectionLayerMask;
-
-        [Header("Weapon delay")]
-        [SerializeField]
-        private float _meleeFireDelay = 0.25f;
-
+        
         [SerializeField]
         private float _rangeFireDelay = 0.2f;
-
-        [SerializeField]
-        private float _grenadeFireDelay = 1f;
-
+        
         [Networked]
         private TickTimer _delayTimestamp { get; set; }
 
@@ -72,7 +65,7 @@ namespace SampleGame
                 if (this.Target == null)
                     return;
 
-                _delayTimestamp = TickTimer.CreateFromSeconds(this.Runner, this.GetDelay());
+                _delayTimestamp = TickTimer.CreateFromSeconds(this.Runner, _rangeFireDelay);
                 _fireStartedEvents++;
             }
         }
@@ -85,23 +78,7 @@ namespace SampleGame
             if (direction.sqrMagnitude > MinRotationDirectionSqrMagnitude)
                 this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
-
-        // Kiss
-        private float GetDelay()
-        {
-            Weapon current = this.Current;
-            if (current is MeleeWeapon)
-                return _meleeFireDelay;
-
-            if (current is ProjectileWeapon)
-                return _rangeFireDelay;
-
-            if (current is GrenadeWeapon)
-                return _grenadeFireDelay;
-
-            throw new Exception($"Undefined weapon type {current.GetType().Name}!");
-        }
-
+        
         public bool CanFire()
         {
             Weapon current = this.Current;
