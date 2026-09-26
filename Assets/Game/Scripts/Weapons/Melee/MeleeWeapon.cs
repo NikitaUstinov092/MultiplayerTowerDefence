@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
 using static UnityEngine.QueryTriggerInteraction;
@@ -7,7 +6,7 @@ namespace SampleGame
 {
     public sealed class MeleeWeapon : Weapon
     {
-        private static readonly List<LagCompensatedHit> s_hitsBuffer = new();
+        private static readonly Collider[] s_colliders = new Collider[32];
 
         [SerializeField]
         private Transform _firePoint;
@@ -34,46 +33,16 @@ namespace SampleGame
 
         public override void Fire()
         {
-            PlayerRef inputAuthority = this.Object.InputAuthority;
-            int count;
-            if (inputAuthority.IsValid)
-            {
-                count = this.Runner.LagCompensation.OverlapSphere(
-                    _firePoint.position,
-                    _fireRadius,
-                    inputAuthority,
-                    s_hitsBuffer,
-                    _layerMask,
-                    HitOptions.IncludePhysX | HitOptions.SubtickAccuracy,
-                    clearHits: true,
-                    Ignore
-                );
-            }
-            else
-            {
-                count = this.Runner.LagCompensation.OverlapSphere(
-                    _firePoint.position,
-                    _fireRadius,
-                    this.Runner.Tick.Raw,
-                    null,
-                    null,
-                    s_hitsBuffer,
-                    _layerMask,
-                    HitOptions.IncludePhysX | HitOptions.SubtickAccuracy,
-                    clearHits: true,
-                    Ignore
-                );
-            }
+            // Удар инициирует сервер, цель ищется по PhysX-коллайдерам на текущем тике
+            // (NearestEnemyFinder / CapsuleCollisionComponent) - бьём по той же геометрии и в тот же момент.
+            int count = this.Runner.GetPhysicsScene()
+                .OverlapSphere(_firePoint.position, _fireRadius, s_colliders, _layerMask, Ignore);
 
             for (int i = 0; i < count; i++)
             {
-                LagCompensatedHit hit = s_hitsBuffer[i];
-                Hitbox hitbox = hit.Hitbox;
-                if (hitbox == null)
-                    continue;
-
-                NetworkObject other = hitbox.GetComponentInParent<NetworkObject>();
-                if (other != null && other.TryGetBehaviour(out HealthComponent health) && health.IsAlive &&
+                NetworkObject other = s_colliders[i].GetComponentInParent<NetworkObject>();
+                // IsValid: коллайдеры деспавненного в этом тике объекта ещё в PhysX-сцене.
+                if (other != null && other.IsValid && other.TryGetBehaviour(out HealthComponent health) && health.IsAlive &&
                     health.CanBeDamagedBy(this.Object))
                 {
                     health.TakeDamage(_damage, this.Object);

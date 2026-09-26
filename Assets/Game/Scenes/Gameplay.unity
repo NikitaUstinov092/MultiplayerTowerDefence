@@ -32750,13 +32750,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 158099399}
     m_Modifications:
+    - target: {fileID: 221525769082969020, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042589268353234855, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2128126820625438276, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
       propertyPath: SortKey
       value: 3768971517
       objectReference: {fileID: 0}
+    - target: {fileID: 2736223015442730601, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
       propertyPath: m_Name
       value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2755872164277444644, guid: c4c58b8d98fa4874c8902ced03964d3c, type: 3}
       propertyPath: m_IsActive

@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Enemy : NetworkBehaviour,
     MoveComponent.ICondition,
-    WeaponComponent.ICondition,
-    WeaponComponent.IIdleCondition
+    CapsuleCollisionComponent.IHandler
 {
     [SerializeField]
     private HealthComponent _healthComponent;
 
     [SerializeField]
     private MoveComponent _moveComponent;
-    
+
     [SerializeField]
     private TeamComponent _teamComponent;
+
+    [SerializeField]
+    private CapsuleCollisionComponent _collisionComponent;
+
+    [SerializeField]
+    private ContactDamageComponent _contactDamage;
 
     public override void Spawned()
     {
@@ -22,6 +27,9 @@ public class Enemy : NetworkBehaviour,
 
         if (_teamComponent != null)
             _healthComponent.SetDamageCondition(_teamComponent);
+
+        if (_collisionComponent != null)
+            _collisionComponent.SetHandler(this);
     }
 
     bool MoveComponent.ICondition.IsMet()
@@ -31,16 +39,11 @@ public class Enemy : NetworkBehaviour,
         return _healthComponent.IsAlive;
     }
 
-    bool WeaponComponent.ICondition.IsMet()
+    void CapsuleCollisionComponent.IHandler.OnCollision(NetworkObject other)
     {
-        if(_healthComponent == null)
-            return true;
-        return _healthComponent.IsAlive;
-    }
+        if (_contactDamage == null || !_healthComponent.IsAlive)
+            return;
 
-    bool WeaponComponent.IIdleCondition.IsMet()
-    {
-        return !_moveComponent.IsMoving;
+        _contactDamage.TryDamage(other);
     }
 }
-

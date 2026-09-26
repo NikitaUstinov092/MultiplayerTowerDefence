@@ -28,7 +28,9 @@ namespace SampleGame
             for (int i = 0; i < count; i++)
             {
                 NetworkObject obj = s_colliderBuffer[i].GetComponentInParent<NetworkObject>();
-                if (obj == null)
+                // Коллайдеры деспавненного в этом тике объекта ещё остаются в PhysX-сцене,
+                // а чтение его [Networked]-свойств бросает исключение.
+                if (obj == null || !obj.IsValid)
                     continue;
 
                 if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(attacker))
