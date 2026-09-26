@@ -19498,9 +19498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '100
-
-'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -23286,7 +23284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -29506,6 +29504,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1202798595}
+  - component: {fileID: 1202798597}
+  - component: {fileID: 1202798596}
   m_Layer: 5
   m_Name: TurretButton
   m_TagString: Untagged
@@ -29536,6 +29536,33 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1202798596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202798594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619e6c5c5dafd044cb3c89dd21bc38d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.PurchaseButtonPresenter
+  _config: {fileID: 11400000, guid: 5c811304092c15b4ebe809bedc9c0a14, type: 2}
+  _view: {fileID: 1202798597}
+--- !u!114 &1202798597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202798594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b1e77080bc51147be5ba47a7d90874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.PurchaseButtonView
+  _price: {fileID: 977341581}
 --- !u!1 &1205312243
 GameObject:
   m_ObjectHideFlags: 0
@@ -32873,8 +32900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f71db446279014083d4a207566b18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.HealthComponent
-  _Current: 1000
-  <Max>k__BackingField: 10
+  _Current: 100
+  <Max>k__BackingField: 100
 --- !u!114 &1317087213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47538,6 +47565,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1881463270}
+  - component: {fileID: 1881463272}
+  - component: {fileID: 1881463271}
   m_Layer: 5
   m_Name: MineButton
   m_TagString: Untagged
@@ -47568,6 +47597,33 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1881463271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881463269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619e6c5c5dafd044cb3c89dd21bc38d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.PurchaseButtonPresenter
+  _config: {fileID: 11400000, guid: 4f2cc5da85ea0c74e9bbca3d8276cb69, type: 2}
+  _view: {fileID: 1881463272}
+--- !u!114 &1881463272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881463269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b1e77080bc51147be5ba47a7d90874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.PurchaseButtonView
+  _price: {fileID: 825222538}
 --- !u!1 &1883098985
 GameObject:
   m_ObjectHideFlags: 0

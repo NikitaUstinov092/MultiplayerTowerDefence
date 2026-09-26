@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::Game.PurchasableConfig
   _prefab:
     RawGuidValue: cd9a4372cefbf3747b263b423d5a0a17
-  _price: 100
+  _price: 200
