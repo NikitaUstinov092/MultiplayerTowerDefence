@@ -28,6 +28,7 @@ namespace SampleGame
 
         public override void OnSimulate(ref Projectile projectile,
             PlayerRef player,
+            NetworkObject owner,
             NetworkRunner runner,
             out bool finished)
         {
@@ -49,34 +50,32 @@ namespace SampleGame
                 .GetPhysicsScene()
                 .Raycast(position, direction, out RaycastHit hit, _speed * deltaTime, _layerMask, Ignore);
 
-            if (wasHit && !this.IsFriendly(hit.collider, player))
+            if (wasHit && !this.IsFriendly(hit.collider, owner))
             {
-                this.DealDamage(hit.collider, player);
+                this.DealDamage(hit.collider, owner);
                 finished = true;
             }
         }
 
-        private bool IsFriendly(Collider collider, PlayerRef player)
+        private bool IsFriendly(Collider collider, NetworkObject owner)
         {
             NetworkObject target = collider.GetComponentInParent<NetworkObject>();
             if (target == null || !target.TryGetBehaviour(out HealthComponent healthComponent))
                 return false;
-
-            // Мёртвый враг не деспавнится и остаётся коллайдером в мире - труп не должен
-            // поглощать снаряд, летящий в живую цель позади него.
+            
             if (!healthComponent.IsAlive)
                 return true;
 
-            return !healthComponent.CanBeDamagedBy(player);
+            return !healthComponent.CanBeDamagedBy(owner);
         }
 
-        private void DealDamage(Collider collider, PlayerRef player)
+        private void DealDamage(Collider collider, NetworkObject owner)
         {
             NetworkObject target = collider.GetComponentInParent<NetworkObject>();
             if (target == null || !target.TryGetBehaviour(out HealthComponent healthComponent))
                 return;
 
-            healthComponent.TakeDamage(_damage, player);
+            healthComponent.TakeDamage(_damage, owner);
         }
 
         public override void OnGizmos(

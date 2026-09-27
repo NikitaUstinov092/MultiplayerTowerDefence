@@ -16,6 +16,10 @@ namespace SampleGame
         public event HealthChangedHandler OnHealthChanged;
         public event Action OnDamageTaken;
 
+        // В отличие от событий выше, вызывается из симуляции и только на сервере - ровно один раз
+        // на смерть. Для игровой логики (награды), а не для визуала.
+        public event Action OnDied;
+
         private static PropertyReader<int> s_healthReader =
             GetPropertyReader<int>(typeof(HealthComponent), nameof(Current));
 
@@ -54,12 +58,6 @@ namespace SampleGame
             return result;
         }
 
-        // Перегрузка для мест, где под рукой только PlayerRef (снаряды/гранаты).
-        public bool CanBeDamagedBy(PlayerRef attacker)
-        {
-            return this.CanBeDamagedBy(this.Runner.GetPlayerObject(attacker));
-        }
-
         public override void Spawned()
         {
             _localTakeDamageEvents = _takeDamageEvents;
@@ -91,6 +89,9 @@ namespace SampleGame
 
             this.Current = Math.Max(0, this.Current - damage);
             _takeDamageEvents++;
+
+            if (this.IsDead)
+                this.OnDied?.Invoke();
         }
 
         public void TakeDamage(int damage, NetworkObject attacker)
@@ -99,12 +100,6 @@ namespace SampleGame
                 return;
 
             this.TakeDamage(damage);
-        }
-
-        // Перегрузка для мест, где под рукой только PlayerRef (снаряды/гранаты).
-        public void TakeDamage(int damage, PlayerRef attacker)
-        {
-            this.TakeDamage(damage, this.Runner.GetPlayerObject(attacker));
         }
 
         // Render()

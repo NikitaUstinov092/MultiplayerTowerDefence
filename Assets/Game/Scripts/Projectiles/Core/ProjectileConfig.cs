@@ -11,8 +11,11 @@ namespace SampleGame
             NetworkRunner runner
         );
 
+        // owner — стрелявший объект (носитель ProjectileWorld), по нему проверяется команда.
+        // PlayerRef для этого не годится: у серверных юнитов (лучник) нет InputAuthority.
         public abstract void OnSimulate(ref Projectile projectile,
             PlayerRef player,
+            NetworkObject owner,
             NetworkRunner runner,
             out bool finished);
 

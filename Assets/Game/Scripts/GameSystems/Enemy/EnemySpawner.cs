@@ -9,6 +9,7 @@ namespace SampleGame
         [SerializeField] private EnemyConfig _enemyConfig;
         [SerializeField] private SpawnPointService _spawnPointService;
         [SerializeField] private float _spawnInterval = 5f;
+        [SerializeField] private TeamWallet _teamWallet;
 
         private float _timer;
 
@@ -24,7 +25,20 @@ namespace SampleGame
             _timer -= _spawnInterval;
 
             Transform spawnPoint = _spawnPointService.GetRandomSpawnPoint();
-            this.Runner.Spawn(_enemyConfig.Prefab, spawnPoint.position, spawnPoint.rotation);
+            this.Runner.Spawn(_enemyConfig.Prefab, spawnPoint.position, spawnPoint.rotation,
+                onBeforeSpawned: (_, enemy) => this.SubscribeReward(enemy));
+        }
+
+        // Враг умирает только от урона команды игроков, поэтому любая смерть - это убийство игроками.
+        // Рандом считается только на сервере, клиенты получают готовый Balance - рассинхрона нет.
+        private void SubscribeReward(NetworkObject enemy)
+        {
+            if (_teamWallet == null || !enemy.TryGetBehaviour(out HealthComponent health))
+                return;
+
+            Vector2Int reward = _enemyConfig.Reward;
+            // Верхняя граница int-версии Random.Range не включается.
+            health.OnDied += () => _teamWallet.AddCoins(Random.Range(reward.x, reward.y + 1));
         }
 
         /// <summary>

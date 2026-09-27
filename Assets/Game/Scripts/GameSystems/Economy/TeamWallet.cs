@@ -20,6 +20,14 @@ namespace SampleGame
             if (this.HasStateAuthority)
                 this.Balance = _startingBalance;
         }
+
+        public void AddCoins(int amount)
+        {
+            if (!this.HasStateAuthority || amount <= 0)
+                return;
+
+            this.Balance += amount;
+        }
         
         [Rpc(RpcSources.All, RpcTargets.StateAuthority, Channel = RpcChannel.Reliable, TickAligned = false, HostMode = RpcHostMode.SourceIsHostPlayer)]
         public void RpcTryBuy(PlayerKeys id, RpcInfo info = default)

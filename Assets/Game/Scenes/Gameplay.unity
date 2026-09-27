@@ -26047,6 +26047,7 @@ MonoBehaviour:
   _enemyConfig: {fileID: 11400000, guid: 59764f096cccf124b8b56eeeb5dc6bf7, type: 2}
   _spawnPointService: {fileID: 382391469}
   _spawnInterval: 5
+  _teamWallet: {fileID: 225814068}
 --- !u!1 &1083548482
 GameObject:
   m_ObjectHideFlags: 0
@@ -36897,6 +36898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1428945950}
+  - component: {fileID: 1428945951}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -36920,6 +36922,20 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 1433310354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428945951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428945949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a3657a62e6acc4e8e5e32bee23a575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.CameraFollow
+  _runner: {fileID: 872498650}
+  _smoothTime: 0.25
 --- !u!1 &1433310353
 GameObject:
   m_ObjectHideFlags: 0

@@ -73,7 +73,7 @@ namespace SampleGame
 
                 ProjectileType projectileType = projectile.type;
                 ProjectileConfig config = _catalog.GetConfig(projectileType);
-                config.OnSimulate(ref projectile, player, runner, out bool finished);
+                config.OnSimulate(ref projectile, player, this.Object, runner, out bool finished);
 
                 if (finished)
                     projectile = default;
