@@ -80,6 +80,16 @@ namespace SampleGame
             this.Current = Math.Min(this.Max, this.Current + heal);
         }
 
+        // Смерть без урона: не увеличивает _takeDamageEvents, чтобы не проигрывалась анимация попадания.
+        public void Kill()
+        {
+            if (!this.HasStateAuthority || this.IsDead)
+                return;
+
+            this.Current = 0;
+            this.OnDied?.Invoke();
+        }
+
         public void TakeDamage(int damage)
         {
             // Урон считает только сервер: снаряды симулируются и на клиенте-владельце (предикт),

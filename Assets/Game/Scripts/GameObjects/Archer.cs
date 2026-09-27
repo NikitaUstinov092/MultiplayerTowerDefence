@@ -7,7 +7,9 @@ namespace Game.Scripts.GameObjects
     public sealed class Archer : NetworkBehaviour,
         MoveComponent.ICondition,
         WeaponComponent.ICondition,
-        WeaponComponent.IIdleCondition
+        WeaponComponent.IIdleCondition,
+        LifetimeComponent.IHandler,
+        DespawnComponent.ICondition
     {
         [SerializeField]
         private HealthComponent _healthComponent;
@@ -18,10 +20,18 @@ namespace Game.Scripts.GameObjects
         [SerializeField]
         private TeamComponent _teamComponent;
 
+        [SerializeField]
+        private LifetimeComponent _lifetimeComponent;
+
+        [SerializeField]
+        private DespawnComponent _despawnComponent;
+
         public override void Spawned()
         {
             _weaponComponent.SetCondition(this);
             _weaponComponent.SetIdleCondition(this);
+            _lifetimeComponent.SetHandler(this);
+            _despawnComponent.SetCondition(this);
 
             if (_teamComponent != null)
                 _healthComponent.SetDamageCondition(_teamComponent);
@@ -41,5 +51,12 @@ namespace Game.Scripts.GameObjects
         {
             return _healthComponent.IsAlive;
         }
+
+        void LifetimeComponent.IHandler.OnExpired()
+        {
+            _healthComponent.Kill();
+        }
+
+        bool DespawnComponent.ICondition.IsMet() => _healthComponent.IsDead;
     }
 }
