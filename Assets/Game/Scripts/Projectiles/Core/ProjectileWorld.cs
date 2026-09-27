@@ -40,8 +40,7 @@ namespace SampleGame
             ProjectileConfig config = _catalog.GetConfig(type);
             config.OnSpawned(ref projectile, this.Object.InputAuthority, runner);
 
-            _projectiles.Set(freeIndex, projectile);
-            return true;
+            _projectiles.Set(freeIndex, projectile);            return true;
         }
 
         private bool FindFreeSlot(out int index)
