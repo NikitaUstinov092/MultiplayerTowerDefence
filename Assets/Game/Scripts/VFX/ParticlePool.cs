@@ -6,24 +6,13 @@ namespace Game
     public sealed class ParticlePool : MonoBehaviour
     {
         // Чистый визуал вне симуляции - сетевой runner не нужен, достаточно одного пула на сцену.
-        public static ParticlePool Instance { get; private set; }
+        // Доступ - через ServiceLocator.
 
         [SerializeField]
         private Transform _container;
 
         private readonly Dictionary<ParticleSystem, Stack<ParticleSystem>> _available = new();
         private readonly List<(ParticleSystem instance, ParticleSystem prefab)> _playing = new();
-
-        private void OnEnable()
-        {
-            Instance = this;
-        }
-
-        private void OnDisable()
-        {
-            if (Instance == this)
-                Instance = null;
-        }
 
         public void Play(ParticleSystem prefab, Vector3 position, Quaternion rotation)
         {

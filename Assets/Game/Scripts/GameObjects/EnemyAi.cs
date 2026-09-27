@@ -16,8 +16,7 @@ namespace SampleGame
 
         public override void Spawned()
         {
-            PortalService portalService = FindObjectOfType<PortalService>();
-            if (portalService != null)
+            if (ServiceLocator.TryGet(out PortalService portalService))
                 _portal = portalService.Portal;
         }
 

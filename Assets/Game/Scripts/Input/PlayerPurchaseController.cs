@@ -14,9 +14,7 @@ namespace SampleGame
 
         public override void Spawned()
         {
-            WalletService walletService = FindObjectOfType<WalletService>();
-            if (walletService != null)
-                _teamWallet = walletService.TeamWallet;
+            ServiceLocator.TryGet(out _teamWallet);
         }
 
         public override void FixedUpdateNetwork()

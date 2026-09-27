@@ -1,3 +1,4 @@
+using SampleGame;
 using UnityEngine;
 
 namespace Game
@@ -9,8 +10,7 @@ namespace Game
 
         public void Play()
         {
-            ParticlePool pool = ParticlePool.Instance;
-            if (pool != null)
+            if (ServiceLocator.TryGet(out ParticlePool pool))
                 pool.Play(_effectPrefab, _playPoint.position, _playPoint.rotation);
             else
                 Instantiate(_effectPrefab, _playPoint.position, _playPoint.rotation, null);

@@ -5730,7 +5730,6 @@ GameObject:
   - component: {fileID: 225814069}
   - component: {fileID: 225814068}
   - component: {fileID: 225814067}
-  - component: {fileID: 225814070}
   m_Layer: 0
   m_Name: Wallet
   m_TagString: Untagged
@@ -5803,19 +5802,6 @@ MonoBehaviour:
   - {fileID: 225814068}
   - {fileID: 225814067}
   ForceRemoteRenderTimeframe: 0
---- !u!114 &225814070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225814065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d31edc605d3c344bab1e45514d4405f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::Game.WalletService
-  _teamWallet: {fileID: 225814068}
 --- !u!1 &226492285
 GameObject:
   m_ObjectHideFlags: 0
@@ -14692,6 +14678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 611151673}
+  - component: {fileID: 611151674}
   m_Layer: 0
   m_Name: '[Services]'
   m_TagString: Untagged
@@ -14715,6 +14702,22 @@ Transform:
   - {fileID: 1892315238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &611151674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611151672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00889eb42526eed429eeba83d436c69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.ServiceLocatorInstaller
+  _services:
+  - {fileID: 225814068}
+  - {fileID: 1892315239}
+  - {fileID: 641081061}
 --- !u!1 &614195110
 GameObject:
   m_ObjectHideFlags: 0
