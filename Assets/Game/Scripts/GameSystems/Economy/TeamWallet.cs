@@ -44,14 +44,11 @@ namespace SampleGame
             Vector3 spawnPosition = this.transform.position;
             if (this.Runner.TryGetPlayerObject(info.Source, out NetworkObject buyer))
             {
-                // У игрока есть отдельное вложенное тело персонажа (MoveComponent живёт на нём,
-                // а не на корневом PlayerNetwork) - берём позицию именно тела, а не корня.
                 spawnPosition = buyer.TryGetBehaviour(out PlayerInputController inputController) && inputController.Character != null
                     ? inputController.Character.transform.position
                     : buyer.transform.position;
             }
-
-            // Сначала спавн, потом списание - чтобы деньги не ушли, если спавн не удался.
+            
             this.Runner.Spawn(config.Prefab, spawnPosition, Quaternion.identity);
             this.Balance -= config.Price;
         }

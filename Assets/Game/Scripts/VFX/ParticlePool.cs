@@ -5,50 +5,48 @@ namespace Game
 {
     public sealed class ParticlePool : MonoBehaviour
     {
-        // Чистый визуал вне симуляции - сетевой runner не нужен, достаточно одного пула на сцену.
-        // Доступ - через ServiceLocator.
-
         [SerializeField]
         private Transform _container;
 
-        private readonly Dictionary<ParticleSystem, Stack<ParticleSystem>> _available = new();
-        private readonly List<(ParticleSystem instance, ParticleSystem prefab)> _playing = new();
+        private readonly Dictionary<ParticleSystem, Stack<PooledParticle>> _available = new();
 
         public void Play(ParticleSystem prefab, Vector3 position, Quaternion rotation)
         {
-            if (!_available.TryGetValue(prefab, out Stack<ParticleSystem> stack))
+            Stack<PooledParticle> stack = this.GetStack(prefab);
+
+            PooledParticle instance = stack.Count > 0 ? stack.Pop() : this.Create(prefab);
+            instance.transform.SetPositionAndRotation(position, rotation);
+            instance.gameObject.SetActive(true);
+            instance.System.Play(withChildren: true);
+        }
+
+        public void Release(PooledParticle instance)
+        {
+            instance.gameObject.SetActive(false);
+            this.GetStack(instance.Prefab).Push(instance);
+        }
+
+        private Stack<PooledParticle> GetStack(ParticleSystem prefab)
+        {
+            if (!_available.TryGetValue(prefab, out Stack<PooledParticle> stack))
             {
-                stack = new Stack<ParticleSystem>();
+                stack = new Stack<PooledParticle>();
                 _available.Add(prefab, stack);
             }
 
-            ParticleSystem instance = stack.Count > 0 ? stack.Pop() : Create(prefab);
-            instance.transform.SetPositionAndRotation(position, rotation);
-            instance.gameObject.SetActive(true);
-            instance.Play(withChildren: true);
-
-            _playing.Add((instance, prefab));
+            return stack;
         }
 
-        private void Update()
-        {
-            for (int i = _playing.Count - 1; i >= 0; i--)
-            {
-                (ParticleSystem instance, ParticleSystem prefab) = _playing[i];
-                if (instance.IsAlive(withChildren: true))
-                    continue;
-
-                instance.gameObject.SetActive(false);
-                _available[prefab].Push(instance);
-                _playing.RemoveAt(i);
-            }
-        }
-
-        private ParticleSystem Create(ParticleSystem prefab)
+        private PooledParticle Create(ParticleSystem prefab)
         {
             Transform parent = _container != null ? _container : this.transform;
-            ParticleSystem instance = Instantiate(prefab, parent);
-            instance.name = prefab.name;
+            ParticleSystem vfx = Instantiate(prefab, parent);
+            vfx.name = prefab.name;
+
+            if (!vfx.TryGetComponent(out PooledParticle instance))
+                instance = vfx.gameObject.AddComponent<PooledParticle>();
+
+            instance.Init(this, prefab);
             return instance;
         }
     }

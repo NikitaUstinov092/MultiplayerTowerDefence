@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace SampleGame
 {
-    // Один сервис на тип. Для нескольких экземпляров одного типа (SpawnPointService)
-    // используются прямые ссылки из инспектора.
+    // Для объектов, создаваемых в рантайме (префабы), которые не могут сослаться на сцену.
+    // Объекты сцены получают зависимости прямыми ссылками из инспектора.
+    // Один сервис на тип — поэтому SpawnPointService (их два) сюда не регистрируется.
     public static class ServiceLocator
     {
         private static readonly Dictionary<Type, object> s_services = new();

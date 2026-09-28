@@ -92,8 +92,6 @@ namespace SampleGame
 
         public override void FixedUpdateNetwork()
         {
-            // Выбор цели - только сервер: на клиенте позиции врагов интерполированы и цель разошлась бы.
-            // Клиент получает Target и запущенную задержку из снапшота и предиктит сам выстрел.
             if (this.HasStateAuthority && !_delayTimestamp.IsRunning)
             {
                 bool canSearch = this.CanFire() && (_idleCondition == null || _idleCondition.IsMet());
@@ -108,8 +106,6 @@ namespace SampleGame
 
             if (_delayTimestamp.Expired(this.Runner) && this.CanFire())
             {
-                // Цель могла умереть/деспавниться за время задержки выстрела - Target тогда
-                // резолвится в null. Стрелять по устаревшему направлению прицела нельзя.
                 if (this.Target == null)
                 {
                     _delayTimestamp = default;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public sealed class PortalService : MonoBehaviour
+    public sealed class PortalPointService : MonoBehaviour
     {
         [SerializeField]
         private Transform _portal;

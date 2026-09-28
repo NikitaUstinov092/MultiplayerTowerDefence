@@ -28,16 +28,13 @@ namespace SampleGame
             this.Runner.Spawn(_enemyConfig.Prefab, spawnPoint.position, spawnPoint.rotation,
                 onBeforeSpawned: (_, enemy) => this.SubscribeReward(enemy));
         }
-
-        // Враг умирает только от урона команды игроков, поэтому любая смерть - это убийство игроками.
-        // Рандом считается только на сервере, клиенты получают готовый Balance - рассинхрона нет.
+        
         private void SubscribeReward(NetworkObject enemy)
         {
             if (_teamWallet == null || !enemy.TryGetBehaviour(out HealthComponent health))
                 return;
 
             Vector2Int reward = _enemyConfig.Reward;
-            // Верхняя граница int-версии Random.Range не включается.
             health.OnDied += () => _teamWallet.AddCoins(Random.Range(reward.x, reward.y + 1));
         }
 

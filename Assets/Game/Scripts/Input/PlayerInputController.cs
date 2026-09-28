@@ -15,18 +15,11 @@ namespace SampleGame
             if (this.GetInput(out PlayerInputData inputData))
             {
                 this.ProcessMove(inputData.moveDirection);
-                this.ProcessSprint(inputData.buttons);
             }
             else
             {
                 this.StopMove();
             }
-        }
-
-        private void ProcessSprint(NetworkButtons inputButtons)
-        {
-            bool sprint = inputButtons.IsSet(PlayerInputButtons.Sprint);
-            _character.GetBehaviour<SprintComponent>().IsSprint = sprint;
         }
 
         private void ProcessMove(Vector2 inputDirection)

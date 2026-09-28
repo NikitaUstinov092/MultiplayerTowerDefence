@@ -12,11 +12,6 @@ namespace SampleGame
 
         private void Update()
         {
-            // Без фокуса окна Input.GetKey/GetAxis всё равно ловит нажатия с ОС (если включён Run In Background),
-            // поэтому свёрнутый инстанс не должен подмешивать свой ввод.
-            // Application.isFocused в редакторе отражает фокус Game View внутри процесса, а не фокус
-            // самого процесса Editor на уровне ОС - между двумя клонами (ParrelSync) этого недостаточно,
-            // поэтому дополнительно проверяем EditorApplication.isFocused.
             if (!this.HasWindowFocus())
             {
                 _currentInput = default;
@@ -24,7 +19,6 @@ namespace SampleGame
             }
 
             _currentInput.moveDirection = _inputMap.GetMoveDirection();
-            _currentInput.buttons.Set(PlayerInputButtons.Sprint, _inputMap.IsSprint());
             _currentInput.buttons.Set(PlayerInputButtons.BuyMine, _inputMap.IsBuyMine());
             _currentInput.buttons.Set(PlayerInputButtons.BuyArcher, _inputMap.IsBuyArcher());
         }

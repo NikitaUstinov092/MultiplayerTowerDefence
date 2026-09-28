@@ -9,9 +9,6 @@ namespace SampleGame
     public sealed class PlayerInputMap : ScriptableObject
     {
         [SerializeField]
-        private KeyCode _sprintKey = KeyCode.LeftShift;
-
-        [SerializeField]
         private KeyCode _buyMineKey = KeyCode.Q;
 
         [SerializeField]
@@ -19,9 +16,6 @@ namespace SampleGame
 
         public Vector2 GetMoveDirection() =>
             new(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
-        public bool IsSprint() =>
-            Input.GetKey(_sprintKey);
 
         public bool IsBuyMine() =>
             Input.GetKey(_buyMineKey);

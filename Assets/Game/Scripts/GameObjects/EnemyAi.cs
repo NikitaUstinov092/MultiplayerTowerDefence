@@ -16,7 +16,7 @@ namespace SampleGame
 
         public override void Spawned()
         {
-            if (ServiceLocator.TryGet(out PortalService portalService))
+            if (ServiceLocator.TryGet(out PortalPointService portalService))
                 _portal = portalService.Portal;
         }
 

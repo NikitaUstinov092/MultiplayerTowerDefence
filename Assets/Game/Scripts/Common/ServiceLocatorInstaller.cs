@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace SampleGame
 {
-    // Регистрация раньше всех скриптов - чтобы сервисы были доступны уже в их Awake/Spawned.
     [DefaultExecutionOrder(-1000)]
     public sealed class ServiceLocatorInstaller : MonoBehaviour
     {
