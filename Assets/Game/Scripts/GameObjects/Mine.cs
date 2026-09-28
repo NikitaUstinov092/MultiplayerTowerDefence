@@ -38,8 +38,7 @@ namespace Game.Scripts.GameObjects
         {
             if (_explosionComponent.IsExploded)
                 return;
-
-            // Детонация только от объекта чужой команды; объекты без команды (портал, снаряды) мину не трогают.
+            
             if (!other.TryGetBehaviour(out TeamComponent otherTeam) || otherTeam.Current == _teamComponent.Current)
                 return;
 
@@ -48,7 +47,6 @@ namespace Game.Scripts.GameObjects
 
         void ExplosionComponent.IHandler.OnHit(NetworkObject target)
         {
-            // Проверку команды цели делает HealthComponent.CanBeDamagedBy внутри TryDamage.
             _contactDamage.TryDamage(target);
         }
     }

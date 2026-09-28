@@ -19,7 +19,6 @@ namespace Game.Scripts.GameObjects
 
         public override void Spawned()
         {
-            // Без условия HealthComponent пропускает урон от любого атакующего, включая мины и снаряды своей команды.
             if (_teamComponent != null)
                 _healthComponent.SetDamageCondition(_teamComponent);
 

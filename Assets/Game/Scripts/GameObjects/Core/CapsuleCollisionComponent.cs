@@ -28,7 +28,6 @@ namespace Game.Scripts.GameObjects.Core.Interaction
 
         public override void FixedUpdateNetwork()
         {
-            // Реакция на столкновение (урон) - решение сервера, как и у WeaponComponent.
             if (!this.HasStateAuthority || _handler == null)
                 return;
 
@@ -46,9 +45,7 @@ namespace Game.Scripts.GameObjects.Core.Interaction
             for (int i = 0; i < count; i++)
             {
                 NetworkObject other = s_colliders[i].GetComponentInParent<NetworkObject>();
-
-                // Собственные коллайдеры тоже попадают в капсулу - пропускаем себя.
-                // IsValid: коллайдеры деспавненного в этом тике объекта ещё остаются в PhysX-сцене.
+                
                 if (other != null && other.IsValid && other != this.Object)
                     _handler.OnCollision(other);
             }

@@ -1,4 +1,5 @@
 using Fusion;
+using Game.Scripts.GameObjects;
 using Game.Scripts.GameObjects.Core;
 using Game.Scripts.GameSystems.Economy;
 using UnityEngine;
@@ -27,9 +28,15 @@ namespace Game.Scripts.GameSystems.Enemy
 
             Transform spawnPoint = _spawnPointService.GetRandomSpawnPoint();
             this.Runner.Spawn(_enemyConfig.Prefab, spawnPoint.position, spawnPoint.rotation,
-                onBeforeSpawned: (_, enemy) => this.SubscribeReward(enemy));
+                onBeforeSpawned: (_, enemy) =>
+                {
+                    if (enemy.TryGetBehaviour(out TeamComponent team))
+                        team.SetTeam(Team.Enemies);
+
+                    this.SubscribeReward(enemy);
+                });
         }
-        
+
         private void SubscribeReward(NetworkObject enemy)
         {
             if (_teamWallet == null || !enemy.TryGetBehaviour(out HealthComponent health))
@@ -38,12 +45,7 @@ namespace Game.Scripts.GameSystems.Enemy
             Vector2Int reward = _enemyConfig.Reward;
             health.OnDied += () => _teamWallet.AddCoins(Random.Range(reward.x, reward.y + 1));
         }
-
-        /// <summary>
-        /// Здесь бегу по всем игрокам, хотя руки тянутся привязаться к событию.
-        /// Но Игорь говорит что так делать нельзя, потому что события срабатывают в OnRender
-        /// </summary>
-        /// <returns></returns>
+        
         private bool IsAnyPlayerDead()
         {
             foreach (PlayerRef player in this.Runner.ActivePlayers)
