@@ -32907,7 +32907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d233cadd8e5e50d71c9d5d7d17bf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.LoseComponent
-  _healthComponent: {fileID: 1317087212}
 --- !u!114 &1317087212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32987,6 +32986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game::SampleGame.Portal
   _healthComponent: {fileID: 1317087212}
   _teamComponent: {fileID: 1317087216}
+  _loseComponent: {fileID: 1317087210}
 --- !u!1 &1321235933
 GameObject:
   m_ObjectHideFlags: 0

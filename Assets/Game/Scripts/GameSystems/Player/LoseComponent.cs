@@ -1,27 +1,32 @@
 using Fusion;
-using UnityEngine;
 
 namespace SampleGame
 {
     public sealed class LoseComponent : NetworkBehaviour
     {
-        [SerializeField]
-        private HealthComponent _healthComponent;
-
-        public override void Spawned()
+        public interface ICondition
         {
-            _healthComponent.OnHealthChanged += this.OnHealthChanged;
+            bool IsMet();
         }
 
-        public override void Despawned(NetworkRunner runner, bool hasState)
+        // Условие проверяется каждый тик - флаг нужен, чтобы уведомление о поражении ушло один раз.
+        [Networked]
+        private NetworkBool _isLost { get; set; }
+
+        private ICondition _condition;
+
+        public void SetCondition(ICondition condition)
         {
-            _healthComponent.OnHealthChanged -= this.OnHealthChanged;
+            _condition = condition;
         }
 
-        private void OnHealthChanged(int previous, int current)
+        public override void FixedUpdateNetwork()
         {
-            if (previous > 0 && current <= 0)
-                this.Runner.GetBehaviour<LoseNotificator>().NotifyAboutLose();
+            if (!this.HasStateAuthority || _isLost || _condition == null || !_condition.IsMet())
+                return;
+
+            _isLost = true;
+            this.Runner.GetBehaviour<LoseNotificator>().NotifyAboutLose();
         }
     }
 }

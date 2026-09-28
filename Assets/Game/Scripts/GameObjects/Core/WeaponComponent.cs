@@ -13,18 +13,13 @@ namespace SampleGame
             bool IsMet();
         }
 
-        public interface IIdleCondition
-        {
-            bool IsMet();
-        }
-
         public event Action OnFireStarted;
 
         [Networked, UnitySerializeField]
-        public Weapon Current { get; private set; }
+        private Weapon Current { get; set; }
 
         [Networked]
-        public NetworkObject Target { get; set; }
+        private NetworkObject Target { get; set; }
 
         [SerializeField]
         private float _detectionRadius = 15f;
@@ -44,45 +39,10 @@ namespace SampleGame
         private ushort _localFireStartedEvents;
 
         private ICondition _condition;
-        private IIdleCondition _idleCondition;
-
-        public bool IsFireStarted => _delayTimestamp.IsRunning(this.Runner);
 
         public void SetCondition(ICondition condition)
         {
             _condition = condition;
-        }
-
-        public void SetIdleCondition(IIdleCondition condition)
-        {
-            _idleCondition = condition;
-        }
-
-        public void StartFire()
-        {
-            if (!_delayTimestamp.IsRunning && this.CanFire())
-            {
-                if (this.Target == null)
-                    return;
-
-                _delayTimestamp = TickTimer.CreateFromSeconds(this.Runner, _rangeFireDelay);
-                _fireStartedEvents++;
-            }
-        }
-
-        private void RotateTowardsTarget()
-        {
-            Vector3 direction = this.Target.transform.position - this.transform.position;
-            direction.y = 0;
-
-            if (direction.sqrMagnitude > MinRotationDirectionSqrMagnitude)
-                this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        }
-        
-        public bool CanFire()
-        {
-            Weapon current = this.Current;
-            return current != null && current.CanFire() && (_condition == null || _condition.IsMet());
         }
 
         public override void Spawned()
@@ -94,8 +54,7 @@ namespace SampleGame
         {
             if (this.HasStateAuthority && !_delayTimestamp.IsRunning)
             {
-                bool canSearch = this.CanFire() && (_idleCondition == null || _idleCondition.IsMet());
-                this.Target = canSearch &&
+                this.Target = this.CanFire() &&
                               NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, _detectionLayerMask, this.Object, out NetworkObject target)
                     ? target
                     : null;
@@ -104,16 +63,16 @@ namespace SampleGame
                     this.StartFire();
             }
 
-            if (_delayTimestamp.Expired(this.Runner) && this.CanFire())
+            if (_delayTimestamp.Expired(this.Runner))
             {
-                if (this.Target == null)
+                // Если условие пропало за время замаха (двинулся, умер) - замах отменяется. Иначе истёкший
+                // таймер остаётся IsRunning, блокирует поиск цели и выстрел срабатывает позже по устаревшей цели.
+                if (this.Target != null && this.CanFire())
                 {
-                    _delayTimestamp = default;
-                    return;
+                    this.RotateTowardsTarget();
+                    this.Current.Fire();
                 }
 
-                this.RotateTowardsTarget();
-                this.Current.Fire();
                 _delayTimestamp = default;
             }
         }
@@ -124,6 +83,33 @@ namespace SampleGame
             {
                 this.OnFireStarted?.Invoke();
                 _localFireStartedEvents++;
+            }
+        }
+        
+        private void RotateTowardsTarget()
+        {
+            Vector3 direction = this.Target.transform.position - this.transform.position;
+            direction.y = 0;
+
+            if (direction.sqrMagnitude > MinRotationDirectionSqrMagnitude)
+                this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        }
+        
+        private bool CanFire()
+        {
+            Weapon current = this.Current;
+            return current != null && current.CanFire() && (_condition == null || _condition.IsMet());
+        }
+        
+        private void StartFire()
+        {
+            if (!_delayTimestamp.IsRunning && this.CanFire())
+            {
+                if (this.Target == null)
+                    return;
+
+                _delayTimestamp = TickTimer.CreateFromSeconds(this.Runner, _rangeFireDelay);
+                _fireStartedEvents++;
             }
         }
     }

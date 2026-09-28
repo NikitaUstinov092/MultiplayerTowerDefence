@@ -14,7 +14,7 @@ namespace SampleGame
         {
             if (this.GetInput(out PlayerInputData inputData))
             {
-                this.ProcessMove(inputData.moveDirection);
+                this.ProcessMove(inputData.MoveDirection);
             }
             else
             {

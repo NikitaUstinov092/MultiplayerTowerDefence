@@ -7,7 +7,6 @@ namespace Game.Scripts.GameObjects
     public sealed class Archer : NetworkBehaviour,
         MoveComponent.ICondition,
         WeaponComponent.ICondition,
-        WeaponComponent.IIdleCondition,
         LifetimeComponent.IHandler,
         DespawnComponent.ICondition
     {
@@ -29,7 +28,6 @@ namespace Game.Scripts.GameObjects
         public override void Spawned()
         {
             _weaponComponent.SetCondition(this);
-            _weaponComponent.SetIdleCondition(this);
             _lifetimeComponent.SetHandler(this);
             _despawnComponent.SetCondition(this);
 
@@ -43,11 +41,6 @@ namespace Game.Scripts.GameObjects
         }
 
         bool WeaponComponent.ICondition.IsMet()
-        {
-            return _healthComponent.IsAlive;
-        }
-
-        bool WeaponComponent.IIdleCondition.IsMet()
         {
             return _healthComponent.IsAlive;
         }

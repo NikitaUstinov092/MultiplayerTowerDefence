@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 8656065238395013999}
   - component: {fileID: 2132107498972163238}
   m_Layer: 6
-  m_Name: Player
+  m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   _moveComponent: {fileID: 5175719141824741121}
   _weaponComponent: {fileID: 3300001163225342915}
   _teamComponent: {fileID: 3236592355564749667}
+  _loseComponent: {fileID: 8656065238395013999}
 --- !u!114 &885445228267891704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d233cadd8e5e50d71c9d5d7d17bf7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.PlayerLoseComponent
-  _healthComponent: {fileID: 8656065238395013018}
 --- !u!114 &2132107498972163238
 MonoBehaviour:
   m_ObjectHideFlags: 0

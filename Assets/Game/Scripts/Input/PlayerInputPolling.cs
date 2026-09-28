@@ -18,9 +18,9 @@ namespace SampleGame
                 return;
             }
 
-            _currentInput.moveDirection = _inputMap.GetMoveDirection();
-            _currentInput.buttons.Set(PlayerInputButtons.BuyMine, _inputMap.IsBuyMine());
-            _currentInput.buttons.Set(PlayerInputButtons.BuyArcher, _inputMap.IsBuyArcher());
+            _currentInput.MoveDirection = _inputMap.GetMoveDirection();
+            _currentInput.Buttons.Set(PlayerInputButtons.BuyMine, _inputMap.IsBuyMine());
+            _currentInput.Buttons.Set(PlayerInputButtons.BuyArcher, _inputMap.IsBuyArcher());
         }
 
         private void OnEnable() =>

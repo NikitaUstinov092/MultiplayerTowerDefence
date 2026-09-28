@@ -6,7 +6,7 @@ namespace SampleGame
     public sealed class Player : NetworkBehaviour,
         MoveComponent.ICondition,
         WeaponComponent.ICondition,
-        WeaponComponent.IIdleCondition
+        LoseComponent.ICondition
     {
         [SerializeField]
         private HealthComponent _healthComponent;
@@ -20,11 +20,14 @@ namespace SampleGame
         [SerializeField]
         private TeamComponent _teamComponent;
 
+        [SerializeField]
+        private LoseComponent _loseComponent;
+
         public override void Spawned()
         {
             _moveComponent.SetCondition(this);
             _weaponComponent.SetCondition(this);
-            _weaponComponent.SetIdleCondition(this);
+            _loseComponent.SetCondition(this);
 
             if (_teamComponent != null)
                 _healthComponent.SetDamageCondition(_teamComponent);
@@ -37,12 +40,12 @@ namespace SampleGame
 
         bool WeaponComponent.ICondition.IsMet()
         {
-            return _healthComponent.IsAlive;
+            return !_moveComponent.IsMoving && _healthComponent.IsAlive;
         }
 
-        bool WeaponComponent.IIdleCondition.IsMet()
+        bool LoseComponent.ICondition.IsMet()
         {
-            return !_moveComponent.IsMoving && _healthComponent.IsAlive;
+            return _healthComponent.IsDead;
         }
     }
 }

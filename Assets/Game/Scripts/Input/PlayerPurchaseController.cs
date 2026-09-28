@@ -1,6 +1,5 @@
 using Fusion;
 using Game;
-using UnityEngine;
 
 namespace SampleGame
 {
@@ -25,11 +24,11 @@ namespace SampleGame
 
             if (_teamWallet != null)
             {
-                TryBuy(inputData.buttons, PlayerInputButtons.BuyMine, PlayerKeys.Mine);
-                TryBuy(inputData.buttons, PlayerInputButtons.BuyArcher, PlayerKeys.Archer);
+                TryBuy(inputData.Buttons, PlayerInputButtons.BuyMine, PlayerKeys.Mine);
+                TryBuy(inputData.Buttons, PlayerInputButtons.BuyArcher, PlayerKeys.Archer);
             }
 
-            _previousButtons = inputData.buttons;
+            _previousButtons = inputData.Buttons;
         }
 
         private void TryBuy(NetworkButtons buttons, PlayerInputButtons button, PlayerKeys key)

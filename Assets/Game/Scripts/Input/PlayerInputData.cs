@@ -5,7 +5,7 @@ namespace SampleGame
 {
     public struct PlayerInputData : INetworkInput
     {
-        public Vector2 moveDirection;
-        public NetworkButtons buttons; // 32
+        public Vector2 MoveDirection;
+        public NetworkButtons Buttons; // 32
     }
 }
