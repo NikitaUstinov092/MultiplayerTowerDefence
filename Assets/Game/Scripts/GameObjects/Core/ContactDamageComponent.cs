@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.Core
 {
     public sealed class ContactDamageComponent : NetworkBehaviour
     {
@@ -16,17 +16,17 @@ namespace SampleGame
 
         [Networked]
         private Tick _hitTick { get; set; }
-
-        // Вызывать только на StateAuthority.
+        
         public bool TryDamage(NetworkObject target)
         {
-            // За один тик враг может задеть несколько целей (портал и игрока) - бьём всех,
-            // кулдаун запускается один раз на весь тик.
+            // Урон и кулдаун - решение сервера, не полагаемся на то, что вызывающий уже проверил авторитет.
+            if (!this.HasStateAuthority)
+                return false;
+
             bool sameTick = _hitTick == this.Runner.Tick;
             if (!sameTick && !_cooldownTimestamp.ExpiredOrNotRunning(this.Runner))
                 return false;
-
-            // IsValid: коллайдеры деспавненного в этом тике объекта ещё остаются в PhysX-сцене.
+            
             if (target == null || !target.IsValid || !target.TryGetBehaviour(out HealthComponent health) ||
                 !health.IsAlive || !health.CanBeDamagedBy(this.Object))
                 return false;

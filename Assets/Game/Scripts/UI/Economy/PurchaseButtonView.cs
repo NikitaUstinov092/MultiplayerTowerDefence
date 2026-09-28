@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI.Economy
 {
     public sealed class PurchaseButtonView : MonoBehaviour
     {

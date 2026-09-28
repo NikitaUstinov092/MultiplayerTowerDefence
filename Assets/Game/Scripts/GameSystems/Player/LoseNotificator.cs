@@ -1,7 +1,7 @@
 using System;
 using Fusion;
 
-namespace SampleGame
+namespace Game.Scripts.GameSystems.Player
 {
     public sealed class LoseNotificator : SimulationBehaviour
     {

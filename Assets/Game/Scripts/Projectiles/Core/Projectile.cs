@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Fusion;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Projectiles.Core
 {
     [StructLayout(LayoutKind.Explicit)]
     public unsafe struct Projectile : INetworkStruct

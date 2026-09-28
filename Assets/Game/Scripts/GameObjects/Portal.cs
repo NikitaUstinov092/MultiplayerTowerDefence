@@ -1,7 +1,9 @@
 using Fusion;
+using Game.Scripts.GameObjects.Core;
+using Game.Scripts.GameSystems.Player;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects
 {
     public sealed class Portal : NetworkBehaviour,
         LoseComponent.ICondition

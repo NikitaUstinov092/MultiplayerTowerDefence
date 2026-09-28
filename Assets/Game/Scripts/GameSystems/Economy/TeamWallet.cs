@@ -1,9 +1,10 @@
 using System;
 using Fusion;
-using Game;
+using Game.Scripts.GameSystems.Player.Input;
+using Game.Scripts.Input;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameSystems.Economy
 {
     public sealed class TeamWallet : NetworkBehaviour
     {

@@ -1,8 +1,10 @@
 using System;
 using Fusion;
+using Game.Scripts.Projectiles;
+using Game.Scripts.Projectiles.Core;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Weapons.Projectile
 {
     public sealed class ProjectileWeapon : Weapon
     {

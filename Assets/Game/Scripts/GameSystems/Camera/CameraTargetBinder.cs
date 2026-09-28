@@ -1,6 +1,7 @@
 using Fusion;
+using Game.Scripts.Common;
 
-namespace SampleGame
+namespace Game.Scripts.GameSystems.Camera
 {
     public sealed class CameraTargetBinder : NetworkBehaviour
     {

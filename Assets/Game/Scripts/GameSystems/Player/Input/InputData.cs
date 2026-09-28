@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.GameSystems.Player.Input
 {
     public struct InputData : INetworkInput
     {

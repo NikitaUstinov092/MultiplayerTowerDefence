@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SampleGame
+namespace Game.Scripts.Common
 {
     public sealed class HealthBarView : MonoBehaviour
     {

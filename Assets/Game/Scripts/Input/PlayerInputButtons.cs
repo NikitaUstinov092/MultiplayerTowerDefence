@@ -1,6 +1,6 @@
 using System;
 
-namespace SampleGame
+namespace Game.Scripts.Input
 {
     [Flags]
     public enum PlayerInputButtons

@@ -1,8 +1,10 @@
 using Fusion;
-using Game;
+using Game.Scripts.Common;
+using Game.Scripts.GameObjects.Core.Move;
+using Game.Scripts.GameSystems;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects
 {
     public sealed class EnemyAi : NetworkBehaviour
     {

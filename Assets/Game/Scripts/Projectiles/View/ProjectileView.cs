@@ -1,7 +1,8 @@
 using Fusion;
+using Game.Scripts.Projectiles.Core;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Projectiles.View
 {
     public abstract class ProjectileView : MonoBehaviour
     {

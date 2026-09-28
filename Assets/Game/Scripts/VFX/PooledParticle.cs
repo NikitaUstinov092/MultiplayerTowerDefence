@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.VFX
 {
     [RequireComponent(typeof(ParticleSystem))]
     public sealed class PooledParticle : MonoBehaviour

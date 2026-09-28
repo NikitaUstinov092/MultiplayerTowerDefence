@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Common
 {
     [DefaultExecutionOrder(-1000)]
     public sealed class ServiceLocatorInstaller : MonoBehaviour

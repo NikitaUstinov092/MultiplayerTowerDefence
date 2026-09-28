@@ -1,6 +1,7 @@
+using Game.Scripts.GameSystems.Economy;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI.Economy
 {
     // Presenter: связывает PurchasableConfig (данные) и PurchaseButtonView (вьюха HUD).
     // Цена статична (из конфига), поэтому это MonoBehaviour, а не NetworkBehaviour.

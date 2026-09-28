@@ -1,7 +1,9 @@
 using Fusion;
-using Game;
+using Game.Scripts.Common;
+using Game.Scripts.GameSystems.Economy;
+using Game.Scripts.GameSystems.Player.Input;
 
-namespace SampleGame
+namespace Game.Scripts.Input
 {
     public sealed class PlayerPurchaseController : NetworkBehaviour
     {

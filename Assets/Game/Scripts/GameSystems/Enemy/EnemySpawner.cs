@@ -1,8 +1,9 @@
 using Fusion;
-using Game;
+using Game.Scripts.GameObjects.Core;
+using Game.Scripts.GameSystems.Economy;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameSystems.Enemy
 {
     public sealed class EnemySpawner : SimulationBehaviour
     {

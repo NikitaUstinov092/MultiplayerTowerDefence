@@ -4,7 +4,7 @@ using Fusion;
 using UnityEngine;
 using Behaviour = Fusion.Behaviour;
 
-namespace SampleGame
+namespace Game.Scripts.Projectiles.View
 {
     public sealed class ProjectileViewPool : Behaviour
     {

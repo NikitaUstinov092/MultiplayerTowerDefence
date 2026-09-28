@@ -1,6 +1,6 @@
 using Fusion;
 
-namespace SampleGame
+namespace Game.Scripts.GameSystems.Player
 {
     public sealed class LoseComponent : NetworkBehaviour
     {

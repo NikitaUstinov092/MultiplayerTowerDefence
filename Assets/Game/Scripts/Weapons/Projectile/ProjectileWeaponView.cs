@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Weapons.Projectile
 {
     public sealed class ProjectileWeaponView : NetworkBehaviour
     {

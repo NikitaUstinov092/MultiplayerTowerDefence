@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Fusion;
+using Game.Scripts.GameSystems.Player.Input;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.GameSystems.Economy
 {
     [CreateAssetMenu(
         fileName = "PurchasableCatalog",

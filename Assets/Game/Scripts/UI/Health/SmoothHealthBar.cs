@@ -1,8 +1,9 @@
 ﻿using DG.Tweening;
+using Game.Scripts.UI.ProgressBar;
 using TMPro;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI.Health
 {
     public sealed class SmoothHealthBar : MonoBehaviour
     {

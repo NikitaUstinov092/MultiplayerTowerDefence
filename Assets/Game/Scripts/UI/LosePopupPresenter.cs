@@ -1,7 +1,7 @@
-using SampleGame;
+using Game.Scripts.GameSystems.Player;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI
 {
     public sealed class LosePopupPresenter : MonoBehaviour
     {

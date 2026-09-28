@@ -1,7 +1,9 @@
 using Fusion;
+using Game.Scripts.Projectiles.Core;
+using Game.Scripts.Projectiles.View;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Projectiles.Content.Direct
 {
     public sealed class DirectProjectileView : ProjectileView
     {

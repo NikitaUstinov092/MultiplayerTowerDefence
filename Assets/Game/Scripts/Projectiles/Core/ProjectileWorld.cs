@@ -3,7 +3,7 @@ using UnityEngine;
 
 // ReSharper disable UnassignedGetOnlyAutoProperty
 
-namespace SampleGame
+namespace Game.Scripts.Projectiles.Core
 {
     public sealed class ProjectileWorld : NetworkBehaviour
     {

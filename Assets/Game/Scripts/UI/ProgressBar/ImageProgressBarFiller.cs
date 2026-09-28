@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game
+namespace Game.Scripts.UI.ProgressBar
 {
     public class ImageProgressBarFiller : ProgressBarFiller
     {

@@ -1,58 +1,63 @@
 using Fusion;
-using SampleGame;
+using Game.Scripts.GameObjects.Core;
+using Game.Scripts.GameObjects.Core.Interaction;
+using Game.Scripts.GameObjects.Core.Move;
 using UnityEngine;
 
-public class Enemy : NetworkBehaviour,
-    MoveComponent.ICondition,
-    CapsuleCollisionComponent.IHandler,
-    DespawnComponent.ICondition
+namespace Game.Scripts.GameObjects
 {
-    [SerializeField]
-    private HealthComponent _healthComponent;
-
-    [SerializeField]
-    private MoveComponent _moveComponent;
-
-    [SerializeField]
-    private TeamComponent _teamComponent;
-
-    [SerializeField]
-    private CapsuleCollisionComponent _collisionComponent;
-
-    [SerializeField]
-    private ContactDamageComponent _contactDamage;
-
-    [SerializeField]
-    private DespawnComponent _despawnComponent;
-
-    public override void Spawned()
+    public class Enemy : NetworkBehaviour,
+        MoveComponent.ICondition,
+        CapsuleCollisionComponent.IHandler,
+        DespawnComponent.ICondition
     {
-        if (_despawnComponent != null)
-            _despawnComponent.SetCondition(this);
+        [SerializeField]
+        private HealthComponent _healthComponent;
 
-        _moveComponent.SetCondition(this);
+        [SerializeField]
+        private MoveComponent _moveComponent;
 
-        if (_teamComponent != null)
-            _healthComponent.SetDamageCondition(_teamComponent);
+        [SerializeField]
+        private TeamComponent _teamComponent;
 
-        if (_collisionComponent != null)
-            _collisionComponent.SetHandler(this);
-    }
+        [SerializeField]
+        private CapsuleCollisionComponent _collisionComponent;
 
-    bool MoveComponent.ICondition.IsMet()
-    {
-        if(_healthComponent == null)
-            return true;
-        return _healthComponent.IsAlive;
-    }
+        [SerializeField]
+        private ContactDamageComponent _contactDamage;
 
-    bool DespawnComponent.ICondition.IsMet() => _healthComponent.IsDead;
+        [SerializeField]
+        private DespawnComponent _despawnComponent;
 
-    void CapsuleCollisionComponent.IHandler.OnCollision(NetworkObject other)
-    {
-        if (_contactDamage == null || !_healthComponent.IsAlive)
-            return;
+        public override void Spawned()
+        {
+            if (_despawnComponent != null)
+                _despawnComponent.SetCondition(this);
 
-        _contactDamage.TryDamage(other);
+            _moveComponent.SetCondition(this);
+
+            if (_teamComponent != null)
+                _healthComponent.SetDamageCondition(_teamComponent);
+
+            if (_collisionComponent != null)
+                _collisionComponent.SetHandler(this);
+        }
+
+        bool MoveComponent.ICondition.IsMet()
+        {
+            if(_healthComponent == null)
+                return true;
+            return _healthComponent.IsAlive;
+        }
+
+        bool DespawnComponent.ICondition.IsMet() => _healthComponent.IsDead;
+
+        void CapsuleCollisionComponent.IHandler.OnCollision(NetworkObject other)
+        {
+            if (_contactDamage == null || !_healthComponent.IsAlive)
+                return;
+
+            _contactDamage.TryDamage(other);
+        }
     }
 }

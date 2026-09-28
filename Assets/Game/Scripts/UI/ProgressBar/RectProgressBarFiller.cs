@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI.ProgressBar
 {
     public class RectProgressBarFiller : ProgressBarFiller
     {

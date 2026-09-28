@@ -1,7 +1,7 @@
 ﻿using Fusion;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.GameSystems.Enemy
 {
     [CreateAssetMenu(menuName = "Game/Enemy",order = 0)]
     public sealed class EnemyConfig : ScriptableObject

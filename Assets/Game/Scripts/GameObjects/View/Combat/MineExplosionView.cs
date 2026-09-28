@@ -1,8 +1,9 @@
 using Fusion;
-using Game;
+using Game.Scripts.GameObjects.Core;
+using Game.Scripts.VFX;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.View.Combat
 {
     public sealed class MineExplosionView : NetworkBehaviour
     {

@@ -1,6 +1,6 @@
 using Fusion;
 
-namespace SampleGame
+namespace Game.Scripts.Weapons
 {
     public abstract class Weapon : NetworkBehaviour
     {

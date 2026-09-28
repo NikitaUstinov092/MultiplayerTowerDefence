@@ -1,8 +1,10 @@
 using Fusion;
+using Game.Scripts.GameObjects.Core;
+using Game.Scripts.Projectiles.Core;
 using UnityEngine;
 using static UnityEngine.QueryTriggerInteraction;
 
-namespace SampleGame
+namespace Game.Scripts.Projectiles.Content.Direct
 {
     [CreateAssetMenu(
         fileName = "ProjectileConfig",

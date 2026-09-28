@@ -2,11 +2,10 @@ using Fusion;
 using UnityEngine;
 using static UnityEngine.QueryTriggerInteraction;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.Core
 {
     public static class NearestEnemyFinder
     {
-        // Не по кол-ву объектов в матче, а по тому, сколько реально попало в сферу поиска.
         private const int MaxColliders = 32;
         private static readonly Collider[] s_colliderBuffer = new Collider[MaxColliders];
 
@@ -28,15 +27,13 @@ namespace SampleGame
             for (int i = 0; i < count; i++)
             {
                 NetworkObject obj = s_colliderBuffer[i].GetComponentInParent<NetworkObject>();
-                // Коллайдеры деспавненного в этом тике объекта ещё остаются в PhysX-сцене,
-                // а чтение его [Networked]-свойств бросает исключение.
+             
                 if (obj == null || !obj.IsValid)
                     continue;
 
                 if (!obj.TryGetBehaviour(out HealthComponent health) || !health.IsAlive || !health.CanBeDamagedBy(attacker))
                     continue;
-
-                // Не берём в цели того, у кого совпадает команда с атакующим
+                
                 if (obj.TryGetBehaviour(out TeamComponent targetTeam) &&
                     attacker != null && attacker.TryGetBehaviour(out TeamComponent attackerTeam) &&
                     targetTeam.Current == attackerTeam.Current)

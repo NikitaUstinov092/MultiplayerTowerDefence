@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Common
 {
     public static class ColliderExtensions
     {

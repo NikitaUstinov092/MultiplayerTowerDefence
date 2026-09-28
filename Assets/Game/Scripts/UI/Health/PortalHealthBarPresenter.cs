@@ -1,8 +1,8 @@
 using Fusion;
-using SampleGame;
+using Game.Scripts.GameObjects.Core;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI.Health
 {
     // Presenter: связывает HealthComponent (логика) и SmoothHealthBar (вьюха)
     public sealed class PortalHealthBarPresenter : NetworkBehaviour

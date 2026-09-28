@@ -1,4 +1,4 @@
-namespace SampleGame
+namespace Game.Scripts.Projectiles
 {
     public enum ProjectileType
     {

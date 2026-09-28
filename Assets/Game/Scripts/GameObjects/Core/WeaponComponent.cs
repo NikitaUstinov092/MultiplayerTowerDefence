@@ -1,8 +1,9 @@
 using System;
 using Fusion;
+using Game.Scripts.Weapons;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.Core
 {
     public sealed class WeaponComponent : NetworkBehaviour
     {
@@ -65,8 +66,6 @@ namespace SampleGame
 
             if (_delayTimestamp.Expired(this.Runner))
             {
-                // Если условие пропало за время замаха (двинулся, умер) - замах отменяется. Иначе истёкший
-                // таймер остаётся IsRunning, блокирует поиск цели и выстрел срабатывает позже по устаревшей цели.
                 if (this.Target != null && this.CanFire())
                 {
                     this.RotateTowardsTarget();

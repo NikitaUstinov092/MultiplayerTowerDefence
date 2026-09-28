@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.GameSystems
 {
     public sealed class SpawnPointService : MonoBehaviour
     {

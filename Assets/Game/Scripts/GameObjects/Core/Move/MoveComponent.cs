@@ -2,7 +2,7 @@ using System;
 using Fusion;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.Core.Move
 {
     public sealed class MoveComponent : NetworkBehaviour
     {

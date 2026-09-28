@@ -1,7 +1,8 @@
 using Fusion;
+using Game.Scripts.GameObjects.Core.Move;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Input
 {
     public sealed class PlayerInputController : NetworkBehaviour
     {

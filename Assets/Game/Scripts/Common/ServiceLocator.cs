@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SampleGame
+namespace Game.Scripts.Common
 {
     // Для объектов, создаваемых в рантайме (префабы), которые не могут сослаться на сцену.
     // Объекты сцены получают зависимости прямыми ссылками из инспектора.

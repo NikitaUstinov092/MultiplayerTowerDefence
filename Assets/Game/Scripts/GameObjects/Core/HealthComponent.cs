@@ -2,7 +2,7 @@ using System;
 using Fusion;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.Core
 {
     public sealed class HealthComponent : NetworkBehaviour
     {

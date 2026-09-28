@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.VFX
 {
     public sealed class ParticlePool : MonoBehaviour
     {

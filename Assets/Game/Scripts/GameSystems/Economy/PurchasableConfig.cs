@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.GameSystems.Economy
 {
     [CreateAssetMenu(menuName = "Game/Purchasable", order = 0)]
     public sealed class PurchasableConfig : ScriptableObject

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Input
 {
     [CreateAssetMenu(
         fileName = "PlayerInputMap",
@@ -15,12 +15,12 @@ namespace SampleGame
         private KeyCode _buyArcherKey = KeyCode.E;
 
         public Vector2 GetMoveDirection() =>
-            new(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            new(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical"));
 
         public bool IsBuyMine() =>
-            Input.GetKey(_buyMineKey);
+            UnityEngine.Input.GetKey(_buyMineKey);
 
         public bool IsBuyArcher() =>
-            Input.GetKey(_buyArcherKey);
+            UnityEngine.Input.GetKey(_buyArcherKey);
     }
 }

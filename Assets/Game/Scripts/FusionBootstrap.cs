@@ -2,7 +2,7 @@ using Fusion;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SampleGame
+namespace Game.Scripts
 {
     public sealed class FusionBootstrap : MonoBehaviour
     {

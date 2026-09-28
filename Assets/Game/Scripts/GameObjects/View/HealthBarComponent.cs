@@ -1,7 +1,9 @@
 using Fusion;
+using Game.Scripts.Common;
+using Game.Scripts.GameObjects.Core;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.View
 {
     // Presenter
     public sealed class HealthBarComponent : NetworkBehaviour

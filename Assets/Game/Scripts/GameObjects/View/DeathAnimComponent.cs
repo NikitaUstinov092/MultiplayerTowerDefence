@@ -1,7 +1,8 @@
 using Fusion;
+using Game.Scripts.GameObjects.Core;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.View
 {
     public sealed class DeathAnimComponent : NetworkBehaviour
     {

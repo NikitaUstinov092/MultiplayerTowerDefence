@@ -1,9 +1,9 @@
 using Fusion;
-using SampleGame;
+using Game.Scripts.GameSystems.Economy;
 using TMPro;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.UI.Economy
 {
     // Presenter: связывает TeamWallet (логика) и TMP_Text (вьюха HUD)
     public sealed class TeamWalletPresenter : NetworkBehaviour

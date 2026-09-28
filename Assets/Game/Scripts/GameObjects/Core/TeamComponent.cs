@@ -1,6 +1,6 @@
 using Fusion;
 
-namespace SampleGame
+namespace Game.Scripts.GameObjects.Core
 {
     public sealed class TeamComponent : NetworkBehaviour, HealthComponent.IDamageCondition
     {

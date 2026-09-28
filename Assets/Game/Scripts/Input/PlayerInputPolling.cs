@@ -1,7 +1,7 @@
 using Fusion;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.Input
 {
     public sealed class PlayerInputPolling : MonoBehaviour
     {

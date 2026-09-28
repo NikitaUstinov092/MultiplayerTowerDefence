@@ -1,8 +1,9 @@
 using Fusion;
-using Game;
+using Game.Scripts.GameObjects;
+using Game.Scripts.GameObjects.Core;
 using UnityEngine;
 
-namespace SampleGame
+namespace Game.Scripts.GameSystems.Player
 {
     public sealed class PlayerJoinController : SimulationBehaviour, IPlayerJoined
     {

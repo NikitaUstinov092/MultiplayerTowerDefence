@@ -1,7 +1,7 @@
-using SampleGame;
+using Game.Scripts.Common;
 using UnityEngine;
 
-namespace Game
+namespace Game.Scripts.VFX
 {
     public sealed class ParticleSpawner : MonoBehaviour
     {
