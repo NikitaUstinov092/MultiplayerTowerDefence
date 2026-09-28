@@ -20840,6 +20840,7 @@ MonoBehaviour:
   - {fileID: 225814068}
   - {fileID: 1892315239}
   - {fileID: 641081061}
+  - {fileID: 1428945951}
 --- !u!1 &874805609
 GameObject:
   m_ObjectHideFlags: 0
@@ -36906,7 +36907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a3657a62e6acc4e8e5e32bee23a575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.CameraFollow
-  _runner: {fileID: 872498650}
   _smoothTime: 0.25
 --- !u!1 &1433310353
 GameObject:

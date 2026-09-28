@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 8656065238395013018}
   - component: {fileID: 3236592355564749667}
   - component: {fileID: 8656065238395013999}
+  - component: {fileID: 2132107498972163238}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -169,6 +170,7 @@ MonoBehaviour:
   - {fileID: 8656065238395013018}
   - {fileID: 3236592355564749667}
   - {fileID: 8656065238395013999}
+  - {fileID: 2132107498972163238}
   - {fileID: 4224607810960875572}
   - {fileID: 3618655383796316529}
   - {fileID: 4811524636929150900}
@@ -305,6 +307,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Game::SampleGame.PlayerLoseComponent
   _healthComponent: {fileID: 8656065238395013018}
+--- !u!114 &2132107498972163238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817862015196818911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77fd89f77fdd686459ae2030fb2e9591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::SampleGame.CameraTargetBinder
 --- !u!1 &4748872520371601905
 GameObject:
   m_ObjectHideFlags: 0
