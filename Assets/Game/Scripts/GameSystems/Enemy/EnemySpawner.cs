@@ -12,12 +12,14 @@ namespace Game.Scripts.GameSystems.Enemy
         [SerializeField] private SpawnPointService _spawnPointService;
         [SerializeField] private float _spawnInterval = 5f;
         [SerializeField] private TeamWallet _teamWallet;
+        [SerializeField] private GameState _gameState;
 
         private float _timer;
 
         public override void FixedUpdateNetwork()
         {
-            if (!Runner.IsServer || IsAnyPlayerDead())
+            // Object == null - сетевой объект сцены ещё не заспавнен, [Networked] читать нельзя.
+            if (!Runner.IsServer || _gameState.Object == null || _gameState.IsGameOver)
                 return;
 
             _timer += Runner.DeltaTime;
@@ -47,21 +49,6 @@ namespace Game.Scripts.GameSystems.Enemy
 
             Vector2Int reward = _enemyConfig.Reward;
             health.OnDied += () => _teamWallet.AddCoins(Random.Range(reward.x, reward.y + 1));
-        }
-        
-        private bool IsAnyPlayerDead()
-        {
-            foreach (PlayerRef player in Runner.ActivePlayers)
-            {
-                if (!Runner.TryGetPlayerObject(player, out NetworkObject playerObject))
-                    continue;
-
-                HealthComponent health = playerObject.GetComponentInChildren<HealthComponent>();
-                if (health != null && health.IsDead)
-                    return true;
-            }
-
-            return false;
         }
     }
 }

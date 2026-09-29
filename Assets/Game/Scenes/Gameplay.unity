@@ -19438,6 +19438,73 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820240688}
   m_Mesh: {fileID: -2757822681844764647, guid: 492bdaf899a3e104e89b8c636a37b918, type: 3}
+--- !u!1 &821988677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821988678}
+  - component: {fileID: 821988680}
+  - component: {fileID: 821988679}
+  m_Layer: 0
+  m_Name: GameState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821988678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821988677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1465445088}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &821988679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821988677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6f50a6e66ac5148b2b9294b8f0c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game::Game.Scripts.GameSystems.GameState
+  _IsGameOver:
+    RawValue: 0
+--- !u!114 &821988680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821988677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Runtime.dll::Fusion.NetworkObject
+  SortKey: 1416053920
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 821988679}
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &825222536
 GameObject:
   m_ObjectHideFlags: 0
@@ -20646,7 +20713,6 @@ GameObject:
   - component: {fileID: 872498648}
   - component: {fileID: 872498647}
   - component: {fileID: 872498646}
-  - component: {fileID: 872498999}
   - component: {fileID: 872499000}
   m_Layer: 0
   m_Name: '[NetworkRunner]'
@@ -20812,18 +20878,6 @@ Transform:
   - {fileID: 1892315238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &872498999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872498645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56d2eb75e75c4b92ab1b01d3f26444c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Game::SampleGame.LoseNotificator
 --- !u!114 &872499000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20841,6 +20895,7 @@ MonoBehaviour:
   - {fileID: 1892315239}
   - {fileID: 641081061}
   - {fileID: 1428945951}
+  - {fileID: 821988679}
 --- !u!1 &874805609
 GameObject:
   m_ObjectHideFlags: 0
@@ -26021,6 +26076,7 @@ MonoBehaviour:
   _spawnPointService: {fileID: 382391469}
   _spawnInterval: 5
   _teamWallet: {fileID: 225814068}
+  _gameState: {fileID: 821988679}
 --- !u!1 &1083548482
 GameObject:
   m_ObjectHideFlags: 0
@@ -37795,6 +37851,7 @@ Transform:
   m_Children:
   - {fileID: 1317087209}
   - {fileID: 225814066}
+  - {fileID: 821988678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1474709454
@@ -53606,7 +53663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe70afac602719c1c062c3cee2cf6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game::Game.LosePopupPresenter
-  _loseNotificator: {fileID: 872498999}
+  _gameState: {fileID: 821988679}
   _losePopup: {fileID: 343090202}
 --- !u!1 &2137877237
 GameObject:

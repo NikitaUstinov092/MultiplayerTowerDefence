@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Input
 {
-    public sealed class PlayerInputController : NetworkBehaviour
+    public sealed class PlayerMoveInputController : NetworkBehaviour
     {
         [SerializeField]
         private NetworkObject _character;

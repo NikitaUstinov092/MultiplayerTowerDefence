@@ -1,4 +1,5 @@
 using Fusion;
+using Game.Scripts.Common;
 
 namespace Game.Scripts.GameSystems.Player
 {
@@ -9,24 +10,26 @@ namespace Game.Scripts.GameSystems.Player
             bool IsMet();
         }
 
-        // Условие проверяется каждый тик - флаг нужен, чтобы уведомление о поражении ушло один раз.
-        [Networked]
-        private NetworkBool _isLost { get; set; }
-
         private ICondition _condition;
+        private GameState _gameState;
 
         public void SetCondition(ICondition condition)
         {
             _condition = condition;
         }
 
+        public override void Spawned()
+        {
+            ServiceLocator.TryGet(out _gameState);
+        }
+
         public override void FixedUpdateNetwork()
         {
-            if (!HasStateAuthority || _isLost || _condition == null || !_condition.IsMet())
+            if (!HasStateAuthority || _gameState == null || _gameState.IsGameOver ||
+                _condition == null || !_condition.IsMet())
                 return;
 
-            _isLost = true;
-            Runner.GetBehaviour<LoseNotificator>().NotifyAboutLose();
+            _gameState.SetGameOver();
         }
     }
 }

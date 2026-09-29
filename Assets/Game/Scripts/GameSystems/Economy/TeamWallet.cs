@@ -45,7 +45,7 @@ namespace Game.Scripts.GameSystems.Economy
             Vector3 spawnPosition = transform.position;
             if (Runner.TryGetPlayerObject(info.Source, out NetworkObject buyer))
             {
-                spawnPosition = buyer.TryGetBehaviour(out PlayerInputController inputController) && inputController.Character != null
+                spawnPosition = buyer.TryGetBehaviour(out PlayerMoveInputController inputController) && inputController.Character != null
                     ? inputController.Character.transform.position
                     : buyer.transform.position;
             }
