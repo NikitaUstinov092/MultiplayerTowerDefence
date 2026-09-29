@@ -55,7 +55,7 @@ namespace Game.Scripts.GameObjects
             if (_contactDamage == null || !_healthComponent.IsAlive)
                 return;
 
-            _contactDamage.TryDamage(other);
+            _contactDamage.TryDamageWithCooldown(other);
         }
     }
 }

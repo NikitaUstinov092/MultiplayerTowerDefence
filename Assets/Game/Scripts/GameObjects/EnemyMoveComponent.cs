@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Scripts.GameObjects
 {
-    public sealed class EnemyAi : NetworkBehaviour
+    public sealed class EnemyMoveComponent : NetworkBehaviour
     {
         [SerializeField]
         private MoveComponent _moveComponent;

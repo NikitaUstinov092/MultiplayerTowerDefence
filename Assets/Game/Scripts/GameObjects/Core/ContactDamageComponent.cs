@@ -16,9 +16,7 @@ namespace Game.Scripts.GameObjects.Core
 
         [Networked]
         private Tick _hitTick { get; set; }
-
-        // Вызывается до Spawned (onBeforeSpawned) на сервере; [Networked] не нужен,
-        // т.к. TryDamage выполняется только на state authority.
+        
         public void Init(int damage, float cooldown)
         {
             _damage = damage;
@@ -30,15 +28,28 @@ namespace Game.Scripts.GameObjects.Core
             if (!HasStateAuthority)
                 return false;
 
-            bool sameTick = _hitTick == Runner.Tick;
-            if (!sameTick && !_cooldownTimestamp.ExpiredOrNotRunning(Runner))
-                return false;
-            
             if (target == null || !target.IsValid || !target.TryGetBehaviour(out HealthComponent health) ||
                 !health.IsAlive || !health.CanBeDamagedBy(Object))
                 return false;
 
             health.TakeDamage(_damage, Object);
+            return true;
+        }
+
+        public bool TryDamageWithCooldown(NetworkObject target)
+        {
+            if (!HasStateAuthority)
+                return false;
+
+            // Кулдаун общий на компонент: в тике первого удара пропускаем его,
+            // чтобы урон получили все цели, касающиеся в этот тик.
+            
+            bool sameTick = _hitTick == Runner.Tick;
+            if (!sameTick && !_cooldownTimestamp.ExpiredOrNotRunning(Runner))
+                return false;
+
+            if (!TryDamage(target))
+                return false;
 
             if (!sameTick)
             {
