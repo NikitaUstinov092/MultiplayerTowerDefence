@@ -15,9 +15,6 @@ namespace Game.Scripts.GameObjects.Core
 
         public event HealthChangedHandler OnHealthChanged;
         public event Action OnDamageTaken;
-
-        // В отличие от событий выше, вызывается из симуляции и только на сервере - ровно один раз
-        // на смерть. Для игровой логики (награды), а не для визуала.
         public event Action OnDied;
 
         private static PropertyReader<int> s_healthReader =
