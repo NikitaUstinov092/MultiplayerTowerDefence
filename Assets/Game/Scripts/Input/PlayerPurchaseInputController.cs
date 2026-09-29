@@ -5,7 +5,7 @@ using Game.Scripts.GameSystems.Player.Input;
 
 namespace Game.Scripts.Input
 {
-    public sealed class PlayerPurchaseController : NetworkBehaviour
+    public sealed class PlayerPurchaseInputController : NetworkBehaviour
     {
         private TeamWallet _teamWallet;
         
