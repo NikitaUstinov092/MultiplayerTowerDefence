@@ -2,7 +2,7 @@ using System;
 using Fusion;
 using UnityEngine;
 
-namespace Game.Scripts.GameObjects.Core.Move
+namespace Game.Scripts.GameObjects.Core
 {
     public sealed class MoveComponent : NetworkBehaviour
     {
@@ -69,17 +69,3 @@ namespace Game.Scripts.GameObjects.Core.Move
     }
 }
 
-// // Forecast Physics
-// private void FixedUpdate()
-// {
-//     if (!this.StateBufferIsValid)
-//         return;
-//     
-//     Vector3 moveDirection = this.MoveDirection;
-//     if (moveDirection != Vector3.zero && (_condition == null || _condition.IsMet()))
-//     {
-//         float deltaTime = Time.fixedDeltaTime;
-//         this.UpdateRotation(moveDirection, deltaTime);
-//         this.UpdatePosition(moveDirection, deltaTime);
-//     }
-// }

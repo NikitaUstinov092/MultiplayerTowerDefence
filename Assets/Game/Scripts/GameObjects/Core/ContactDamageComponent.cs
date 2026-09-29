@@ -16,10 +16,17 @@ namespace Game.Scripts.GameObjects.Core
 
         [Networked]
         private Tick _hitTick { get; set; }
-        
+
+        // Вызывается до Spawned (onBeforeSpawned) на сервере; [Networked] не нужен,
+        // т.к. TryDamage выполняется только на state authority.
+        public void Init(int damage, float cooldown)
+        {
+            _damage = damage;
+            _cooldown = cooldown;
+        }
+
         public bool TryDamage(NetworkObject target)
         {
-            // Урон и кулдаун - решение сервера, не полагаемся на то, что вызывающий уже проверил авторитет.
             if (!this.HasStateAuthority)
                 return false;
 

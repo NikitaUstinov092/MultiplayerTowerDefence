@@ -13,7 +13,7 @@ namespace Game.Scripts.GameSystems.Enemy
 
         public NetworkPrefabRef Prefab => _prefab;
         public int Damage => _damage;
-        public float PlayerDamageCooldown => _playerDamageCooldown;
+        public float DamageCooldown => _playerDamageCooldown;
         public Vector2Int Reward => _reward;
     }
 }

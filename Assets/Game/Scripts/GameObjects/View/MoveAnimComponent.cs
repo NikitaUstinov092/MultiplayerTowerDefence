@@ -1,8 +1,8 @@
 using Fusion;
-using Game.Scripts.GameObjects.Core.Move;
+using Game.Scripts.GameObjects.Core;
 using UnityEngine;
 
-namespace Game.Scripts.GameObjects.View.Move
+namespace Game.Scripts.GameObjects.View
 {
     public sealed class MoveAnimComponent : NetworkBehaviour
     {

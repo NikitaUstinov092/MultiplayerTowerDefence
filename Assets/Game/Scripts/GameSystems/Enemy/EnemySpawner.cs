@@ -17,23 +17,26 @@ namespace Game.Scripts.GameSystems.Enemy
 
         public override void FixedUpdateNetwork()
         {
-            if (!this.Runner.IsServer || this.IsAnyPlayerDead())
+            if (!Runner.IsServer || IsAnyPlayerDead())
                 return;
 
-            _timer += this.Runner.DeltaTime;
+            _timer += Runner.DeltaTime;
             if (_timer < _spawnInterval)
                 return;
 
             _timer -= _spawnInterval;
 
             Transform spawnPoint = _spawnPointService.GetRandomSpawnPoint();
-            this.Runner.Spawn(_enemyConfig.Prefab, spawnPoint.position, spawnPoint.rotation,
+            Runner.Spawn(_enemyConfig.Prefab, spawnPoint.position, spawnPoint.rotation,
                 onBeforeSpawned: (_, enemy) =>
                 {
                     if (enemy.TryGetBehaviour(out TeamComponent team))
                         team.SetTeam(Team.Enemies);
 
-                    this.SubscribeReward(enemy);
+                    if (enemy.TryGetBehaviour(out ContactDamageComponent contactDamage))
+                        contactDamage.Init(_enemyConfig.Damage, _enemyConfig.DamageCooldown);
+
+                    SubscribeReward(enemy);
                 });
         }
 
@@ -48,9 +51,9 @@ namespace Game.Scripts.GameSystems.Enemy
         
         private bool IsAnyPlayerDead()
         {
-            foreach (PlayerRef player in this.Runner.ActivePlayers)
+            foreach (PlayerRef player in Runner.ActivePlayers)
             {
-                if (!this.Runner.TryGetPlayerObject(player, out NetworkObject playerObject))
+                if (!Runner.TryGetPlayerObject(player, out NetworkObject playerObject))
                     continue;
 
                 HealthComponent health = playerObject.GetComponentInChildren<HealthComponent>();

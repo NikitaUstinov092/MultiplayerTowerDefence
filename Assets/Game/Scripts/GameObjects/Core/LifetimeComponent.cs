@@ -31,11 +31,9 @@ namespace Game.Scripts.GameObjects.Core
 
         public override void FixedUpdateNetwork()
         {
-            // Истечение срока жизни - решение сервера, как и деспавн.
             if (!this.HasStateAuthority || !_lifetimeTimestamp.Expired(this.Runner))
                 return;
-
-            // Сброс таймера - чтобы обработчик сработал ровно один раз.
+            
             _lifetimeTimestamp = default;
             _handler?.OnExpired();
         }

@@ -1,7 +1,5 @@
 using Fusion;
 using Game.Scripts.GameObjects.Core;
-using Game.Scripts.GameObjects.Core.Interaction;
-using Game.Scripts.GameObjects.Core.Move;
 using UnityEngine;
 
 namespace Game.Scripts.GameObjects

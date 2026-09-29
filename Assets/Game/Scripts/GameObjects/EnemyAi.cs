@@ -1,6 +1,6 @@
 using Fusion;
 using Game.Scripts.Common;
-using Game.Scripts.GameObjects.Core.Move;
+using Game.Scripts.GameObjects.Core;
 using Game.Scripts.GameSystems;
 using UnityEngine;
 

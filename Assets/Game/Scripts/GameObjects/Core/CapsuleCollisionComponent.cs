@@ -2,7 +2,7 @@ using Fusion;
 using Game.Scripts.Common;
 using UnityEngine;
 
-namespace Game.Scripts.GameObjects.Core.Interaction
+namespace Game.Scripts.GameObjects.Core
 {
     public sealed class CapsuleCollisionComponent : NetworkBehaviour
     {

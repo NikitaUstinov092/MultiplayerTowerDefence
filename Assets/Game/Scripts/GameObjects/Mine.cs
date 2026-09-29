@@ -1,6 +1,5 @@
 using Fusion;
 using Game.Scripts.GameObjects.Core;
-using Game.Scripts.GameObjects.Core.Interaction;
 using UnityEngine;
 
 namespace Game.Scripts.GameObjects
