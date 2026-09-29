@@ -12,7 +12,7 @@ namespace Game.Scripts.Input
 
         private void Update()
         {
-            if (!this.HasWindowFocus())
+            if (!HasWindowFocus())
             {
                 _currentInput = default;
                 return;
@@ -24,10 +24,10 @@ namespace Game.Scripts.Input
         }
 
         private void OnEnable() =>
-            _networkEvents.OnInput.AddListener(this.OnInput);
+            _networkEvents.OnInput.AddListener(OnInput);
 
         private void OnDisable() =>
-            _networkEvents.OnInput.RemoveListener(this.OnInput);
+            _networkEvents.OnInput.RemoveListener(OnInput);
 
         private void OnInput(NetworkRunner runner, NetworkInput input) =>
             input.Set(_currentInput);

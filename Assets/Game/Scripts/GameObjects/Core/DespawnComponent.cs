@@ -25,14 +25,14 @@ namespace Game.Scripts.GameObjects.Core
 
         public override void FixedUpdateNetwork()
         {
-            if (!this.HasStateAuthority || _condition == null || !_condition.IsMet())
+            if (!HasStateAuthority || _condition == null || !_condition.IsMet())
                 return;
             
             if (!_despawnTimestamp.IsRunning)
-                _despawnTimestamp = TickTimer.CreateFromSeconds(this.Runner, _despawnDelay);
+                _despawnTimestamp = TickTimer.CreateFromSeconds(Runner, _despawnDelay);
             
-            else if (_despawnTimestamp.Expired(this.Runner))
-                this.Runner.Despawn(this.Object);
+            else if (_despawnTimestamp.Expired(Runner))
+                Runner.Despawn(Object);
         }
     }
 }

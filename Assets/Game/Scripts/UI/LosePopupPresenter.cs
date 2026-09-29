@@ -13,12 +13,12 @@ namespace Game.Scripts.UI
 
         private void OnEnable()
         {
-            _loseNotificator.OnLose += this.OnLose;
+            _loseNotificator.OnLose += OnLose;
         }
 
         private void OnDisable()
         {
-            _loseNotificator.OnLose -= this.OnLose;
+            _loseNotificator.OnLose -= OnLose;
         }
 
         private void OnLose()

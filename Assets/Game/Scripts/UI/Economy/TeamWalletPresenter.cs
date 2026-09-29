@@ -13,18 +13,18 @@ namespace Game.Scripts.UI.Economy
 
         public override void Spawned()
         {
-            _teamWallet.OnBalanceChanged += this.OnBalanceChanged;
-            this.UpdateView(_teamWallet.Balance);
+            _teamWallet.OnBalanceChanged += OnBalanceChanged;
+            UpdateView(_teamWallet.Balance);
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
-            _teamWallet.OnBalanceChanged -= this.OnBalanceChanged;
+            _teamWallet.OnBalanceChanged -= OnBalanceChanged;
         }
 
         private void OnBalanceChanged(int balance)
         {
-            this.UpdateView(balance);
+            UpdateView(balance);
         }
 
         private void UpdateView(int balance)

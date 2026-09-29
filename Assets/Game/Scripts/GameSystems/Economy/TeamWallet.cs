@@ -18,45 +18,45 @@ namespace Game.Scripts.GameSystems.Economy
 
         public override void Spawned()
         {
-            if (this.HasStateAuthority)
-                this.Balance = _startingBalance;
+            if (HasStateAuthority)
+                Balance = _startingBalance;
         }
 
         public void AddCoins(int amount)
         {
-            if (!this.HasStateAuthority || amount <= 0)
+            if (!HasStateAuthority || amount <= 0)
                 return;
 
-            this.Balance += amount;
+            Balance += amount;
         }
         
         [Rpc(RpcSources.All, RpcTargets.StateAuthority, Channel = RpcChannel.Reliable, TickAligned = false, HostMode = RpcHostMode.SourceIsHostPlayer)]
         public void RpcTryBuy(PlayerKeys id, RpcInfo info = default)
         {
-            if (!this.HasStateAuthority || _catalog == null)
+            if (!HasStateAuthority || _catalog == null)
                 return;
 
             if (!_catalog.TryGetConfig(id, out PurchasableConfig config))
                 return;
 
-            if (this.Balance < config.Price)
+            if (Balance < config.Price)
                 return;
 
-            Vector3 spawnPosition = this.transform.position;
-            if (this.Runner.TryGetPlayerObject(info.Source, out NetworkObject buyer))
+            Vector3 spawnPosition = transform.position;
+            if (Runner.TryGetPlayerObject(info.Source, out NetworkObject buyer))
             {
                 spawnPosition = buyer.TryGetBehaviour(out PlayerInputController inputController) && inputController.Character != null
                     ? inputController.Character.transform.position
                     : buyer.transform.position;
             }
             
-            this.Runner.Spawn(config.Prefab, spawnPosition, Quaternion.identity);
-            this.Balance -= config.Price;
+            Runner.Spawn(config.Prefab, spawnPosition, Quaternion.identity);
+            Balance -= config.Price;
         }
 
         private void InvokeBalanceChanged(NetworkBehaviourBuffer previousSnapshot)
         {
-            this.OnBalanceChanged?.Invoke(this.Balance);
+            OnBalanceChanged?.Invoke(Balance);
         }
     }
 }

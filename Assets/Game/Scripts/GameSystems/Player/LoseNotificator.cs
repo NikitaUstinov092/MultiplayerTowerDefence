@@ -9,8 +9,8 @@ namespace Game.Scripts.GameSystems.Player
 
         public void NotifyAboutLose()
         {
-            if (this.Runner.IsServer)
-                RpcLose(this.Runner);
+            if (Runner.IsServer)
+                RpcLose(Runner);
         }
 
         // Server -> Client

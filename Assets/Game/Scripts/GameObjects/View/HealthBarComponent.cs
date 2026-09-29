@@ -16,17 +16,17 @@ namespace Game.Scripts.GameObjects.View
 
         public override void Spawned()
         {
-            _healthComponent.OnHealthChanged += this.OnHealthChanged;
-            this.UpdateHealth(_healthComponent.Current);
+            _healthComponent.OnHealthChanged += OnHealthChanged;
+            UpdateHealth(_healthComponent.Current);
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState) =>
-            _healthComponent.OnHealthChanged -= this.OnHealthChanged;
+            _healthComponent.OnHealthChanged -= OnHealthChanged;
 
         private void OnHealthChanged(int previous, int current)
         {
-            Debug.Log($"Health Changed {this.Object.name} from {previous} to {current}");
-            this.UpdateHealth(current);
+            Debug.Log($"Health Changed {Object.name} from {previous} to {current}");
+            UpdateHealth(current);
         }
 
         private void UpdateHealth(int health)

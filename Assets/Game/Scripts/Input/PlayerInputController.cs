@@ -13,13 +13,13 @@ namespace Game.Scripts.Input
 
         public override void FixedUpdateNetwork()
         {
-            if (this.GetInput(out PlayerInputData inputData))
+            if (GetInput(out PlayerInputData inputData))
             {
-                this.ProcessMove(inputData.MoveDirection);
+                ProcessMove(inputData.MoveDirection);
             }
             else
             {
-                this.StopMove();
+                StopMove();
             }
         }
 

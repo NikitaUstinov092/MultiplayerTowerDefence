@@ -36,11 +36,11 @@ namespace Game.Scripts.GameObjects.Core
         // Вызывать только на StateAuthority.
         public void Explode()
         {
-            if (!this.HasStateAuthority || this.IsExploded)
+            if (!HasStateAuthority || IsExploded)
                 return;
 
-            int count = this.Runner.GetPhysicsScene().OverlapSphere(
-                this.transform.position,
+            int count = Runner.GetPhysicsScene().OverlapSphere(
+                transform.position,
                 _radius,
                 s_colliders,
                 _layerMask,
@@ -54,26 +54,26 @@ namespace Game.Scripts.GameObjects.Core
                 NetworkObject target = s_colliders[i].GetComponentInParent<NetworkObject>();
 
                 // IsValid: коллайдеры деспавненного в этом тике объекта ещё остаются в PhysX-сцене.
-                if (target == null || !target.IsValid || target == this.Object || !s_hitObjects.Add(target))
+                if (target == null || !target.IsValid || target == Object || !s_hitObjects.Add(target))
                     continue;
 
                 _handler?.OnHit(target);
             }
 
-            this.IsExploded = true;
+            IsExploded = true;
         }
 
         private void InvokeExploded()
         {
-            if (this.IsExploded)
-                this.OnExploded?.Invoke();
+            if (IsExploded)
+                OnExploded?.Invoke();
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(this.transform.position, _radius);
+            Gizmos.DrawWireSphere(transform.position, _radius);
         }
 #endif
     }

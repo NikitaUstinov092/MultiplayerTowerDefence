@@ -21,6 +21,6 @@ namespace Game.Scripts.Projectiles.Core
 
         public IEnumerator<KeyValuePair<ProjectileType, ProjectileConfig>> GetEnumerator() => _configs.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

@@ -30,7 +30,7 @@ namespace Game.Scripts.GameObjects
                 return;
             }
 
-            Vector3 offset = _portal.position - this.transform.position;
+            Vector3 offset = _portal.position - transform.position;
             offset.y = 0;
 
             if (offset.sqrMagnitude <= _stopDistance * _stopDistance)

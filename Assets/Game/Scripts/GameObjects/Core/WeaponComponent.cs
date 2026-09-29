@@ -53,23 +53,23 @@ namespace Game.Scripts.GameObjects.Core
 
         public override void FixedUpdateNetwork()
         {
-            if (this.HasStateAuthority && !_delayTimestamp.IsRunning)
+            if (HasStateAuthority && !_delayTimestamp.IsRunning)
             {
-                this.Target = this.CanFire() &&
-                              NearestEnemyFinder.TryFind(this.Runner, this.transform.position, _detectionRadius, _detectionLayerMask, this.Object, out NetworkObject target)
+                Target = CanFire() &&
+                              NearestEnemyFinder.TryFind(Runner, transform.position, _detectionRadius, _detectionLayerMask, Object, out NetworkObject target)
                     ? target
                     : null;
 
-                if (this.Target != null)
-                    this.StartFire();
+                if (Target != null)
+                    StartFire();
             }
 
-            if (_delayTimestamp.Expired(this.Runner))
+            if (_delayTimestamp.Expired(Runner))
             {
-                if (this.Target != null && this.CanFire())
+                if (Target != null && CanFire())
                 {
-                    this.RotateTowardsTarget();
-                    this.Current.Fire();
+                    RotateTowardsTarget();
+                    Current.Fire();
                 }
 
                 _delayTimestamp = default;
@@ -80,34 +80,34 @@ namespace Game.Scripts.GameObjects.Core
         {
             while (_localFireStartedEvents < _fireStartedEvents)
             {
-                this.OnFireStarted?.Invoke();
+                OnFireStarted?.Invoke();
                 _localFireStartedEvents++;
             }
         }
         
         private void RotateTowardsTarget()
         {
-            Vector3 direction = this.Target.transform.position - this.transform.position;
+            Vector3 direction = Target.transform.position - transform.position;
             direction.y = 0;
 
             if (direction.sqrMagnitude > MinRotationDirectionSqrMagnitude)
-                this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+                transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
         
         private bool CanFire()
         {
-            Weapon current = this.Current;
+            Weapon current = Current;
             return current != null && current.CanFire() && (_condition == null || _condition.IsMet());
         }
         
         private void StartFire()
         {
-            if (!_delayTimestamp.IsRunning && this.CanFire())
+            if (!_delayTimestamp.IsRunning && CanFire())
             {
-                if (this.Target == null)
+                if (Target == null)
                     return;
 
-                _delayTimestamp = TickTimer.CreateFromSeconds(this.Runner, _rangeFireDelay);
+                _delayTimestamp = TickTimer.CreateFromSeconds(Runner, _rangeFireDelay);
                 _fireStartedEvents++;
             }
         }

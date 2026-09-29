@@ -15,18 +15,18 @@ namespace Game.Scripts.UI.Health
         
         public override void Spawned()
         {
-            _healthComponent.OnHealthChanged += this.OnHealthChanged;
+            _healthComponent.OnHealthChanged += OnHealthChanged;
             UpdateView(_healthComponent.Current, smoothFollow: false);
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
-            _healthComponent.OnHealthChanged -= this.OnHealthChanged;
+            _healthComponent.OnHealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged(int previous, int current)
         {
-            this.UpdateView(current, smoothFollow: true);
+            UpdateView(current, smoothFollow: true);
         }
 
         private void UpdateView(int current, bool smoothFollow)

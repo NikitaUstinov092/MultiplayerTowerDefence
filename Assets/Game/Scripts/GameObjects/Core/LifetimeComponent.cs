@@ -25,13 +25,13 @@ namespace Game.Scripts.GameObjects.Core
 
         public override void Spawned()
         {
-            if (this.HasStateAuthority)
-                _lifetimeTimestamp = TickTimer.CreateFromSeconds(this.Runner, _lifetime);
+            if (HasStateAuthority)
+                _lifetimeTimestamp = TickTimer.CreateFromSeconds(Runner, _lifetime);
         }
 
         public override void FixedUpdateNetwork()
         {
-            if (!this.HasStateAuthority || !_lifetimeTimestamp.Expired(this.Runner))
+            if (!HasStateAuthority || !_lifetimeTimestamp.Expired(Runner))
                 return;
             
             _lifetimeTimestamp = default;

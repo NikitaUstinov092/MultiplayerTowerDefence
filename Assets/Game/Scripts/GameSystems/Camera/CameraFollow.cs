@@ -14,7 +14,7 @@ namespace Game.Scripts.GameSystems.Camera
         {
             _target = target;
             
-            this.transform.position = target.position;
+            transform.position = target.position;
             _velocity = Vector3.zero;
         }
 
@@ -29,8 +29,8 @@ namespace Game.Scripts.GameSystems.Camera
             if (_target == null)
                 return;
 
-            this.transform.position = Vector3.SmoothDamp(
-                this.transform.position,
+            transform.position = Vector3.SmoothDamp(
+                transform.position,
                 _target.position,
                 ref _velocity,
                 _smoothTime

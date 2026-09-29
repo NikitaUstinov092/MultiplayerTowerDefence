@@ -37,7 +37,7 @@ namespace Game.Scripts.Weapons.Projectile
 
         public override bool CanFire()
         {
-            return _cooldownTimestamp.ExpiredOrNotRunning(this.Runner) &&
+            return _cooldownTimestamp.ExpiredOrNotRunning(Runner) &&
                    _ammo > 0 &&
                    _projectileWorld.CanSpawn();
         }
@@ -46,7 +46,7 @@ namespace Game.Scripts.Weapons.Projectile
         {
             _projectileWorld.TrySpawn(_projectileType, _firePoint.position, _firePoint.rotation);
             _ammo--;
-            _cooldownTimestamp = TickTimer.CreateFromSeconds(this.Runner, _cooldown);
+            _cooldownTimestamp = TickTimer.CreateFromSeconds(Runner, _cooldown);
             _fireCount++;
         }
 
@@ -59,7 +59,7 @@ namespace Game.Scripts.Weapons.Projectile
         {
             while (_localFireCount < _fireCount)
             {
-                this.OnFire?.Invoke();
+                OnFire?.Invoke();
                 _localFireCount++;
             }
         }

@@ -52,9 +52,9 @@ namespace Game.Scripts.Projectiles.Content.Direct
                 .GetPhysicsScene()
                 .Raycast(position, direction, out RaycastHit hit, _speed * deltaTime, _layerMask, Ignore);
 
-            if (wasHit && !this.IsFriendly(hit.collider, owner))
+            if (wasHit && !IsFriendly(hit.collider, owner))
             {
-                this.DealDamage(hit.collider, owner);
+                DealDamage(hit.collider, owner);
                 finished = true;
             }
         }

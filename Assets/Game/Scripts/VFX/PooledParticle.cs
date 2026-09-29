@@ -13,12 +13,12 @@ namespace Game.Scripts.VFX
         public void Init(ParticlePool pool, ParticleSystem prefab)
         {
             _pool = pool;
-            this.Prefab = prefab;
-            this.System = this.GetComponent<ParticleSystem>();
+            Prefab = prefab;
+            System = GetComponent<ParticleSystem>();
 
             // Unity вызывает OnParticleSystemStopped только при stopAction = Callback,
             // выставляем в коде, чтобы не настраивать каждый префаб вручную.
-            ParticleSystem.MainModule main = this.System.main;
+            ParticleSystem.MainModule main = System.main;
             main.stopAction = ParticleSystemStopAction.Callback;
         }
 

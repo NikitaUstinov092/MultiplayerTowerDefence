@@ -12,11 +12,11 @@ namespace Game.Scripts.GameSystems.Player
 
         void IPlayerJoined.PlayerJoined(PlayerRef player)
         {
-            if (this.Runner.IsServer)
+            if (Runner.IsServer)
             {
                 Transform spawnPoint = _spawnPointService.GetSpawnPoint(player.AsIndex % _spawnPointService.Count);
-                NetworkObject character = this.Runner.Spawn(_characterPrefab, spawnPoint.position, spawnPoint.rotation, player);
-                this.Runner.SetPlayerObject(player, character); // Index peer, NetworkId
+                NetworkObject character = Runner.Spawn(_characterPrefab, spawnPoint.position, spawnPoint.rotation, player);
+                Runner.SetPlayerObject(player, character); // Index peer, NetworkId
 
                 if (character.TryGetBehaviour(out TeamComponent team))
                     team.SetTeam(Team.Players);

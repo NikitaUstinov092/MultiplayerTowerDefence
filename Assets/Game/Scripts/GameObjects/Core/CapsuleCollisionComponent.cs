@@ -28,12 +28,12 @@ namespace Game.Scripts.GameObjects.Core
 
         public override void FixedUpdateNetwork()
         {
-            if (!this.HasStateAuthority || _handler == null)
+            if (!HasStateAuthority || _handler == null)
                 return;
 
             _collider.GetPointsAndRadius(out Vector3 point0, out Vector3 point1, out float radius);
 
-            int count = this.Runner.GetPhysicsScene().OverlapCapsule(
+            int count = Runner.GetPhysicsScene().OverlapCapsule(
                 point0,
                 point1,
                 radius,
@@ -46,7 +46,7 @@ namespace Game.Scripts.GameObjects.Core
             {
                 NetworkObject other = s_colliders[i].GetComponentInParent<NetworkObject>();
                 
-                if (other != null && other.IsValid && other != this.Object)
+                if (other != null && other.IsValid && other != Object)
                     _handler.OnCollision(other);
             }
         }

@@ -16,13 +16,13 @@ namespace Game.Scripts.GameObjects.View
 
         public override void Spawned()
         {
-            _moveComponent.OnStateChanged += this.OnStateChanged;
-            this.OnStateChanged();
+            _moveComponent.OnStateChanged += OnStateChanged;
+            OnStateChanged();
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
-            _moveComponent.OnStateChanged -= this.OnStateChanged;
+            _moveComponent.OnStateChanged -= OnStateChanged;
         }
 
         private void OnStateChanged()

@@ -21,7 +21,7 @@ namespace Game.Scripts.GameObjects.Core
 
         private ICondition _condition;
 
-        public bool IsMoving => this.MoveDirection != Vector3.zero;
+        public bool IsMoving => MoveDirection != Vector3.zero;
 
         public void SetCondition(ICondition condition)
         {
@@ -34,37 +34,37 @@ namespace Game.Scripts.GameObjects.Core
         // FUN
         public void Move(Vector3 direction)
         {
-            this.MoveDirection = _condition == null || _condition.IsMet() ? direction : Vector3.zero;
+            MoveDirection = _condition == null || _condition.IsMet() ? direction : Vector3.zero;
 
-            if (this.MoveDirection != Vector3.zero)
+            if (MoveDirection != Vector3.zero)
             {
                 float deltaTime = Time.fixedDeltaTime;
-                this.UpdateRotation(this.MoveDirection, deltaTime);
-                this.UpdatePosition(this.MoveDirection, deltaTime);
+                UpdateRotation(MoveDirection, deltaTime);
+                UpdatePosition(MoveDirection, deltaTime);
             }
         }
 
         // FUN
         public void Stop()
         {
-            this.MoveDirection = Vector3.zero;
+            MoveDirection = Vector3.zero;
         }
 
         private void UpdateRotation(Vector3 direction, float deltaTime)
         {
-            Quaternion current = this.transform.rotation;
+            Quaternion current = transform.rotation;
             Quaternion target = Quaternion.LookRotation(direction, Vector3.up);
-            this.transform.rotation = Quaternion.RotateTowards(current, target, _angularSpeed * deltaTime);
+            transform.rotation = Quaternion.RotateTowards(current, target, _angularSpeed * deltaTime);
         }
 
         private void UpdatePosition(Vector3 direction, float deltaTime)
         {
-            this.transform.position += direction * deltaTime * _moveSpeed;
+            transform.position += direction * deltaTime * _moveSpeed;
         }
 
         private void MoveDirectionChanged()
         {
-            this.OnStateChanged?.Invoke();
+            OnStateChanged?.Invoke();
         }
     }
 }

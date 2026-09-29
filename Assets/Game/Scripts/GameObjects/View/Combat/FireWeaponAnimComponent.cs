@@ -16,14 +16,14 @@ namespace Game.Scripts.GameObjects.View.Combat
 
         public override void Spawned()
         {
-            if (this.enabled)
-                _weaponComponent.OnFireStarted += this.OnFire;
+            if (enabled)
+                _weaponComponent.OnFireStarted += OnFire;
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
-            if (this.enabled)
-                _weaponComponent.OnFireStarted -= this.OnFire;
+            if (enabled)
+                _weaponComponent.OnFireStarted -= OnFire;
         }
 
         private void OnFire()

@@ -9,7 +9,7 @@ namespace Game.Scripts.GameObjects.Core
 
         public void SetTeam(Team team)
         {
-            this.Current = team;
+            Current = team;
         }
 
         bool HealthComponent.IDamageCondition.IsMet(NetworkObject attacker)
@@ -21,7 +21,7 @@ namespace Game.Scripts.GameObjects.Core
             if (attackerTeam == null)
                 return true;
 
-            return attackerTeam.Current != this.Current;
+            return attackerTeam.Current != Current;
         }
     }
 }

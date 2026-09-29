@@ -21,7 +21,7 @@ namespace Game.Scripts
                 SessionName = "SampleSession",
                 PlayerCount = 2,
                 Scene = sceneInfo,
-                SceneManager = this.gameObject.AddComponent<NetworkSceneManagerDefault>()
+                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
             });
         }
     }

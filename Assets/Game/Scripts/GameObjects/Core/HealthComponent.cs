@@ -29,12 +29,12 @@ namespace Game.Scripts.GameObjects.Core
         [field: SerializeField]
         public int Max { get; set; } = 10; // Const
 
-        public bool IsDead => this.Current <= 0;
+        public bool IsDead => Current <= 0;
 
-        public bool IsAlive => this.Current > 0;
+        public bool IsAlive => Current > 0;
 
-        public bool IsNotFull => this.Current < this.Max;
-        public float Progress => (float) this.Current / this.Max;
+        public bool IsNotFull => Current < Max;
+        public float Progress => (float) Current / Max;
 
         [Networked]
         private ushort _takeDamageEvents { get; set; } // 65000
@@ -51,7 +51,7 @@ namespace Game.Scripts.GameObjects.Core
         public bool CanBeDamagedBy(NetworkObject attacker)
         {
             // Без TeamComponent объект не может быть целью ни для поиска, ни для урона (например, Portal)
-            if (!this.Object.TryGetBehaviour(out TeamComponent _))
+            if (!Object.TryGetBehaviour(out TeamComponent _))
                 return false;
 
             var result = _condition == null || _condition.IsMet(attacker);
@@ -67,7 +67,7 @@ namespace Game.Scripts.GameObjects.Core
         {
             while (_localTakeDamageEvents < _takeDamageEvents)
             {
-                this.OnDamageTaken?.Invoke();
+                OnDamageTaken?.Invoke();
                 _localTakeDamageEvents++;
             }
         }
@@ -77,46 +77,46 @@ namespace Game.Scripts.GameObjects.Core
             if (heal <= 0)
                 return;
 
-            this.Current = Math.Min(this.Max, this.Current + heal);
+            Current = Math.Min(Max, Current + heal);
         }
 
         // Смерть без урона: не увеличивает _takeDamageEvents, чтобы не проигрывалась анимация попадания.
         public void Kill()
         {
-            if (!this.HasStateAuthority || this.IsDead)
+            if (!HasStateAuthority || IsDead)
                 return;
 
-            this.Current = 0;
-            this.OnDied?.Invoke();
+            Current = 0;
+            OnDied?.Invoke();
         }
 
         public void TakeDamage(int damage)
         {
             // Урон считает только сервер: снаряды симулируются и на клиенте-владельце (предикт),
             // а запись в HP чужих прокси-объектов на клиенте даёт мерцание до прихода снапшота.
-            if (!this.HasStateAuthority || damage <= 0 || this.IsDead)
+            if (!HasStateAuthority || damage <= 0 || IsDead)
                 return;
 
-            this.Current = Math.Max(0, this.Current - damage);
+            Current = Math.Max(0, Current - damage);
             _takeDamageEvents++;
 
-            if (this.IsDead)
-                this.OnDied?.Invoke();
+            if (IsDead)
+                OnDied?.Invoke();
         }
 
         public void TakeDamage(int damage, NetworkObject attacker)
         {
-            if (!this.CanBeDamagedBy(attacker))
+            if (!CanBeDamagedBy(attacker))
                 return;
 
-            this.TakeDamage(damage);
+            TakeDamage(damage);
         }
 
         // Render()
         private void InvokeHealthChanged(NetworkBehaviourBuffer previousSnapshot)
         {
             int previousHealth = s_healthReader.Read(previousSnapshot);
-            this.OnHealthChanged?.Invoke(previousHealth, this.Current);
+            OnHealthChanged?.Invoke(previousHealth, Current);
         }
     }
 }

@@ -13,12 +13,12 @@ namespace Game.Scripts.Weapons.Projectile
 
         public override void Spawned()
         {
-            _weapon.OnFire += this.OnFire;
+            _weapon.OnFire += OnFire;
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
-            _weapon.OnFire -= this.OnFire;
+            _weapon.OnFire -= OnFire;
         }
 
         private void OnFire()

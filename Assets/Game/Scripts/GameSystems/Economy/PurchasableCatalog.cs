@@ -23,6 +23,6 @@ namespace Game.Scripts.GameSystems.Economy
 
         public IEnumerator<KeyValuePair<PlayerKeys, PurchasableConfig>> GetEnumerator() => _configs.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

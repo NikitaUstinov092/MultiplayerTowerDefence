@@ -12,9 +12,9 @@ namespace Game.Scripts.VFX
 
         public void Play(ParticleSystem prefab, Vector3 position, Quaternion rotation)
         {
-            Stack<PooledParticle> stack = this.GetStack(prefab);
+            Stack<PooledParticle> stack = GetStack(prefab);
 
-            PooledParticle instance = stack.Count > 0 ? stack.Pop() : this.Create(prefab);
+            PooledParticle instance = stack.Count > 0 ? stack.Pop() : Create(prefab);
             instance.transform.SetPositionAndRotation(position, rotation);
             instance.gameObject.SetActive(true);
             instance.System.Play(withChildren: true);
@@ -23,7 +23,7 @@ namespace Game.Scripts.VFX
         public void Release(PooledParticle instance)
         {
             instance.gameObject.SetActive(false);
-            this.GetStack(instance.Prefab).Push(instance);
+            GetStack(instance.Prefab).Push(instance);
         }
 
         private Stack<PooledParticle> GetStack(ParticleSystem prefab)
@@ -39,7 +39,7 @@ namespace Game.Scripts.VFX
 
         private PooledParticle Create(ParticleSystem prefab)
         {
-            Transform parent = _container != null ? _container : this.transform;
+            Transform parent = _container != null ? _container : transform;
             ParticleSystem vfx = Instantiate(prefab, parent);
             vfx.name = prefab.name;
 

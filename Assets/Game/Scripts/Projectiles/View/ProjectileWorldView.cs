@@ -19,13 +19,13 @@ namespace Game.Scripts.Projectiles.View
         public override void Spawned()
         {
             _projectileViews = new ProjectileView[_world.Length];
-            _projectileViewPool = this.Runner.GetBehaviour<ProjectileViewPool>();
+            _projectileViewPool = Runner.GetBehaviour<ProjectileViewPool>();
         }
 
         public override void Render()
         {
             PlayerRef player = _world.Object.InputAuthority;
-            NetworkRunner runner = this.Runner;
+            NetworkRunner runner = Runner;
 
             _world.GetProjectileSnapshots(
                 out NetworkArrayReadOnly<Projectile> previousProjectiles,

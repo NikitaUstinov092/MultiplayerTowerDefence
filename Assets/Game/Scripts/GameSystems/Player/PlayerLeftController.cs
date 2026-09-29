@@ -6,8 +6,8 @@ namespace Game.Scripts.GameSystems.Player
     {
         void IPlayerLeft.PlayerLeft(PlayerRef player)
         {
-            if (this.Runner.IsServer && this.Runner.TryGetPlayerObject(player, out NetworkObject character)) 
-                this.Runner.Despawn(character);
+            if (Runner.IsServer && Runner.TryGetPlayerObject(player, out NetworkObject character)) 
+                Runner.Despawn(character);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Game.Scripts.Projectiles.Content.Direct
             NetworkRunner runner
         )
         {
-            this.UpdatePosition(in current, player, runner);
+            UpdatePosition(in current, player, runner);
         }
 
         public override void OnRender(
@@ -29,7 +29,7 @@ namespace Game.Scripts.Projectiles.Content.Direct
             NetworkRunner runner
         )
         {
-            this.UpdatePosition(in current, player, runner);
+            UpdatePosition(in current, player, runner);
         }
 
         public override void OnDespawn(in Projectile previous, PlayerRef player, NetworkRunner runner)
@@ -38,8 +38,8 @@ namespace Game.Scripts.Projectiles.Content.Direct
 
         private void UpdatePosition(in Projectile projectile, PlayerRef player, NetworkRunner runner)
         {
-            this.transform.position = _config.GetRenderPosition(in projectile, player, runner);
-            this.transform.rotation = Quaternion.LookRotation(projectile.Direction);
+            transform.position = _config.GetRenderPosition(in projectile, player, runner);
+            transform.rotation = Quaternion.LookRotation(projectile.Direction);
         }
     }
 }

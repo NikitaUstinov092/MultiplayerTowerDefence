@@ -22,11 +22,11 @@ namespace Game.Scripts.GameSystems.Player
 
         public override void FixedUpdateNetwork()
         {
-            if (!this.HasStateAuthority || _isLost || _condition == null || !_condition.IsMet())
+            if (!HasStateAuthority || _isLost || _condition == null || !_condition.IsMet())
                 return;
 
             _isLost = true;
-            this.Runner.GetBehaviour<LoseNotificator>().NotifyAboutLose();
+            Runner.GetBehaviour<LoseNotificator>().NotifyAboutLose();
         }
     }
 }

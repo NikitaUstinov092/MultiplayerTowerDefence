@@ -20,14 +20,14 @@ namespace Game.Scripts.Projectiles.Core
         [Networked, Capacity(CAPACITY)]
         private NetworkArray<Projectile> _projectiles { get; }
 
-        public bool CanSpawn() => this.FindFreeSlot(out _);
+        public bool CanSpawn() => FindFreeSlot(out _);
 
         public bool TrySpawn(ProjectileType type, Vector3 position, Quaternion rotation)
         {
-            if (!this.FindFreeSlot(out int freeIndex))
+            if (!FindFreeSlot(out int freeIndex))
                 return false;
 
-            NetworkRunner runner = this.Runner;
+            NetworkRunner runner = Runner;
             Projectile projectile = new Projectile
             {
                 type = type,
@@ -38,7 +38,7 @@ namespace Game.Scripts.Projectiles.Core
 
             
             ProjectileConfig config = _catalog.GetConfig(type);
-            config.OnSpawned(ref projectile, this.Object.InputAuthority, runner);
+            config.OnSpawned(ref projectile, Object.InputAuthority, runner);
 
             _projectiles.Set(freeIndex, projectile);            return true;
         }
@@ -61,8 +61,8 @@ namespace Game.Scripts.Projectiles.Core
 
         public override void FixedUpdateNetwork()
         {
-            NetworkRunner runner = this.Runner;
-            PlayerRef player = this.Object.InputAuthority;
+            NetworkRunner runner = Runner;
+            PlayerRef player = Object.InputAuthority;
 
             for (int i = 0; i < CAPACITY; i++)
             {
@@ -72,7 +72,7 @@ namespace Game.Scripts.Projectiles.Core
 
                 ProjectileType projectileType = projectile.type;
                 ProjectileConfig config = _catalog.GetConfig(projectileType);
-                config.OnSimulate(ref projectile, player, this.Object, runner, out bool finished);
+                config.OnSimulate(ref projectile, player, Object, runner, out bool finished);
 
                 if (finished)
                     projectile = default;
@@ -81,11 +81,11 @@ namespace Game.Scripts.Projectiles.Core
 
         private void OnDrawGizmos()
         {
-            if (!this.StateBufferIsValid)
+            if (!StateBufferIsValid)
                 return;
 
-            PlayerRef player = this.Object.InputAuthority;
-            NetworkRunner runner = this.Runner;
+            PlayerRef player = Object.InputAuthority;
+            NetworkRunner runner = Runner;
             for (int i = 0; i < CAPACITY; i++)
             {
                 ref Projectile projectile = ref _projectiles.GetRef(i);
@@ -108,7 +108,7 @@ namespace Game.Scripts.Projectiles.Core
             out float alpha //0..1
         )
         {
-            if (this.TryGetSnapshotsBuffers(
+            if (TryGetSnapshotsBuffers(
                     out NetworkBehaviourBuffer from,
                     out NetworkBehaviourBuffer to,
                     out alpha

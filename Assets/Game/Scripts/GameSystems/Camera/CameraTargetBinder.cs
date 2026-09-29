@@ -9,14 +9,14 @@ namespace Game.Scripts.GameSystems.Camera
 
         public override void Spawned()
         {
-            if (this.HasInputAuthority && ServiceLocator.TryGet(out _camera))
-                _camera.SetTarget(this.transform);
+            if (HasInputAuthority && ServiceLocator.TryGet(out _camera))
+                _camera.SetTarget(transform);
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
             if (_camera != null)
-                _camera.ClearTarget(this.transform);
+                _camera.ClearTarget(transform);
 
             _camera = null;
         }

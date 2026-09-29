@@ -18,10 +18,10 @@ namespace Game.Scripts.Input
 
         public override void FixedUpdateNetwork()
         {
-            if (!this.HasInputAuthority)
+            if (!HasInputAuthority)
                 return;
 
-            if (!this.GetInput(out PlayerInputData inputData))
+            if (!GetInput(out PlayerInputData inputData))
                 return;
 
             if (_teamWallet != null)

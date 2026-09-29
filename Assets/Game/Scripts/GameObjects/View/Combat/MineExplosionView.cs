@@ -18,13 +18,13 @@ namespace Game.Scripts.GameObjects.View.Combat
 
         public override void Spawned()
         {
-            _explosion.OnExploded += this.OnExploded;
+            _explosion.OnExploded += OnExploded;
             _visual.SetActive(!_explosion.IsExploded);
         }
 
         public override void Despawned(NetworkRunner runner, bool hasState)
         {
-            _explosion.OnExploded -= this.OnExploded;
+            _explosion.OnExploded -= OnExploded;
         }
 
         public override void Render()

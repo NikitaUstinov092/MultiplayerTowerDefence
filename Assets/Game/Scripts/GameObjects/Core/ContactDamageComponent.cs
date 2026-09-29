@@ -27,23 +27,23 @@ namespace Game.Scripts.GameObjects.Core
 
         public bool TryDamage(NetworkObject target)
         {
-            if (!this.HasStateAuthority)
+            if (!HasStateAuthority)
                 return false;
 
-            bool sameTick = _hitTick == this.Runner.Tick;
-            if (!sameTick && !_cooldownTimestamp.ExpiredOrNotRunning(this.Runner))
+            bool sameTick = _hitTick == Runner.Tick;
+            if (!sameTick && !_cooldownTimestamp.ExpiredOrNotRunning(Runner))
                 return false;
             
             if (target == null || !target.IsValid || !target.TryGetBehaviour(out HealthComponent health) ||
-                !health.IsAlive || !health.CanBeDamagedBy(this.Object))
+                !health.IsAlive || !health.CanBeDamagedBy(Object))
                 return false;
 
-            health.TakeDamage(_damage, this.Object);
+            health.TakeDamage(_damage, Object);
 
             if (!sameTick)
             {
-                _hitTick = this.Runner.Tick;
-                _cooldownTimestamp = TickTimer.CreateFromSeconds(this.Runner, _cooldown);
+                _hitTick = Runner.Tick;
+                _cooldownTimestamp = TickTimer.CreateFromSeconds(Runner, _cooldown);
             }
 
             return true;
